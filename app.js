@@ -16,7 +16,7 @@ var Card = function(card, suit, value, altValue){
 
 // // // // DECK OF CARDS // // // //
 
- var deck = [];
+var deck = [];
 
 var twoHearts = new Card("two", "hearts", 2);
 var twoSpades = new Card("two", "spades", 2);
@@ -87,10 +87,8 @@ var aceDiamonds = new Card("ace", "diamonds", 11, 1);
 
 deck.push(twoHearts,twoSpades,twoClubs,twoDiamonds,threeHearts,threeSpades,threeClubs,threeDiamonds,fourHearts,fourSpades,fourClubs,fourDiamonds,fiveHearts,fiveSpades,fiveClubs,fiveDiamonds,sixHearts,sixSpades,sixClubs,sixDiamonds,sevenHearts,sevenSpades,sevenClubs,sevenDiamonds,eightHearts,eightSpades,eightClubs,eightDiamonds,nineHearts,nineSpades,nineClubs,nineDiamonds,tenHearts,tenSpades,tenClubs,tenDiamonds,jackHearts,jackSpades,jackClubs,jackDiamonds,queenHearts,queenSpades,queenClubs,queenDiamonds,kingHearts,kingSpades,kingClubs,kingDiamonds,aceHearts,aceSpades,aceClubs,aceDiamonds);
 
-console.log(deck);
-
 // // // // FUNCTION TO SHUFFLE THE DECK // // // //
-// ------ Uses the "Fisher-Yates Shuffle" ------- //
+// Uses the "Fisher-Yates Shuffle" //
 
 function shuffle(array) {
   var m = array.length, t, i;
@@ -103,12 +101,29 @@ function shuffle(array) {
     array[m] = array[i];
     array[i] = t;
   }
-
   return array;
 }
 
-// ---> SHUFFLE THE DECK
+// // // // SHUFFLE THE DECK // // // //
 
-shuffle(deck); 
+shuffle(deck); // --> Now you have a shuffled deck! //
 
-// Now you have a suffled deck! 
+// // // // DEAL // // // //
+
+var dealerHand = [];
+var playerHand = []
+
+function deal(arr){
+    playerHand.push(arr[0],arr[2]);
+    dealerHand.push(arr[1], arr[3]);
+};
+
+deal(deck);
+
+// // // // SET ORIGINAL HAND VALUES // // // //
+
+var playerCount = playerHand[0].value + playerHand[1].value;
+var dealerCount = dealerHand[0].value + dealerHand[1].value;
+
+console.log(playerCount);
+console.log(dealerCount);
