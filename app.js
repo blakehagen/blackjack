@@ -122,8 +122,16 @@ deal(deck);
 
 // // // // SET ORIGINAL HAND VALUES // // // //
 
-var playerCount = playerHand[0].value + playerHand[1].value;
-var dealerCount = dealerHand[0].value + dealerHand[1].value;
+function playerCount(){
+  return playerHand[0].value + playerHand[1].value;
+}
 
-console.log(playerCount);
-console.log(dealerCount);
+function dealerCount(){
+  return dealerHand[0].value + dealerHand[1].value;
+}
+
+var player =  playerCount();
+var dealer = dealerCount();
+
+console.log(player);
+console.log(dealer);
