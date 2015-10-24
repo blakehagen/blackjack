@@ -93,7 +93,6 @@ function freshDeck(){
 
 var deck = freshDeck(); // --> returns unshuffled fresh deck of cards
 
-
 // // // // FUNCTION TO SHUFFLE THE DECK (("Fisher-Yates" Algorithm)) // // // //
 
 function shuffle(array) {
@@ -121,7 +120,6 @@ var player = 0;
 var dealerHand = [];
 var dealer = 0;
 
-
 function deal(arr){
     playerHand.push(arr[0],arr[2]);
     dealerHand.push(arr[1], arr[3]);
@@ -145,9 +143,6 @@ function dealerCount(){
 }
 
 
-console.log(player);
-console.log(dealer);
-
 // // // // PLAYER HIT FUNCTION // // // //
 
 function hitPlayer(){
@@ -164,13 +159,14 @@ function hitDealer(){
   deck.splice(0,1);
 }
 
-// // // // RESET HANDS BACK TO ZERO // // // //
+// // // // RESET HANDS BACK TO ZERO and RESET DECK // // // //
 
-function reset(){
+function reset(freshDeck){
   playerHand = [];
   player = 0;
   dealerHand = [];
   dealer = 0;
+  deck = freshDeck();
   console.log("Reset complete");
 }
 
