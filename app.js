@@ -91,12 +91,10 @@ function freshDeck(){
   return deck;
 };
 
-// freshDeck() --> returns unshuffled fresh deck of cards
+var deck = freshDeck(); // --> returns unshuffled fresh deck of cards
 
 
-
-// // // // FUNCTION TO SHUFFLE THE DECK // // // //
-// Uses the "Fisher-Yates Shuffle" //
+// // // // FUNCTION TO SHUFFLE THE DECK (("Fisher-Yates" Algorithm)) // // // //
 
 function shuffle(array) {
   var m = array.length, t, i;
@@ -114,32 +112,65 @@ function shuffle(array) {
 
 // // // // SHUFFLE THE DECK // // // //
 
-// shuffle(deck); // --> Now you have a shuffled deck! //
+shuffle(deck); // --> Now you have a shuffled deck! //
 
 // // // // DEAL // // // //
 
+var playerHand = [];
+var player = 0;
 var dealerHand = [];
-var playerHand = []
+var dealer = 0;
+
 
 function deal(arr){
     playerHand.push(arr[0],arr[2]);
     dealerHand.push(arr[1], arr[3]);
+    arr.splice(0,4);
 };
 
-// deal(deck);
+deal(deck);
 
 // // // // SET ORIGINAL HAND VALUES // // // //
 
+// PLAYER
 function playerCount(){
-  return playerHand[0].value + playerHand[1].value;
+  player = playerHand[0].value + playerHand[1].value;
+  return player;
 }
 
+// DEALER
 function dealerCount(){
-  return dealerHand[0].value + dealerHand[1].value;
+  dealer = dealerHand[0].value + dealerHand[1].value;
+  return dealer;  
 }
 
-var player =  playerCount();
-var dealer = dealerCount();
 
 console.log(player);
 console.log(dealer);
+
+// // // // PLAYER HIT FUNCTION // // // //
+
+function hitPlayer(){
+  playerHand.push(deck[0]);
+  player = player + playerHand[playerHand.length-1].value;
+  deck.splice(0,1);
+}
+
+// // // // DEALER HIT FUNCTION // // // //
+
+function hitDealer(){
+  dealerHand.push(deck[0]);
+  dealer = dealer + dealerHand[dealerHand.length-1].value;
+  deck.splice(0,1);
+}
+
+// // // // RESET HANDS BACK TO ZERO // // // //
+
+function reset(){
+  playerHand = [];
+  player = 0;
+  dealerHand = [];
+  dealer = 0;
+  console.log("Reset complete");
+}
+
