@@ -2,12 +2,13 @@
 
 
 // // // Card Constructor // // //
-
+var id = 1;
 var Card = function(card, suit, value, altValue){
 	this.card = card;
 	this.suit = suit;
 	this.value = value;
-	this.altValue = altValue
+	this.altValue = altValue;
+	this.id = id++;
 	this.shuffle = function(){
 		console.log("I'm a " + this.card + " of " + this.suit + ".");
 	};
@@ -82,6 +83,32 @@ var aceSpades = new Card("ace", "spades", 11, 1);
 var aceClubs = new Card("ace", "clubs", 11, 1);
 var aceDiamonds = new Card("ace", "diamonds", 11, 1);
 
+// Push Cards into 'deck' array //
+
 deck.push(twoHearts,twoSpades,twoClubs,twoDiamonds,threeHearts,threeSpades,threeClubs,threeDiamonds,fourHearts,fourSpades,fourClubs,fourDiamonds,fiveHearts,fiveSpades,fiveClubs,fiveDiamonds,sixHearts,sixSpades,sixClubs,sixDiamonds,sevenHearts,sevenSpades,sevenClubs,sevenDiamonds,eightHearts,eightSpades,eightClubs,eightDiamonds,nineHearts,nineSpades,nineClubs,nineDiamonds,tenHearts,tenSpades,tenClubs,tenDiamonds,jackHearts,jackSpades,jackClubs,jackDiamonds,queenHearts,queenSpades,queenClubs,queenDiamonds,kingHearts,kingSpades,kingClubs,kingDiamonds,aceHearts,aceSpades,aceClubs,aceDiamonds);
 
 console.log(deck);
+
+// // // // FUNCTION TO SHUFFLE THE DECK // // // //
+// ------ Uses the "Fisher-Yates Shuffle" ------- //
+
+function shuffle(array) {
+  var m = array.length, t, i;
+  // While there remain elements to shuffle…
+  while (m) {
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}
+
+// ---> SHUFFLE THE DECK
+
+shuffle(deck); 
+
+// Now you have a suffled deck! 
