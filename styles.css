@@ -30,7 +30,7 @@ header {
 	header .item {
 		/*border: 1px solid palevioletred;*/
 		width: 30%;
-		margin: 0 50px 0 50px;
+		margin: 0 50px 0 70px;
 		display: inline-block;
 	}
 
@@ -58,20 +58,29 @@ header {
 .button {
 	width: 180px;
 	height: 40px;
-	border: 1px solid #ddd;
-	
+	border: 1px solid #333;
 	border-radius: 50px;
-	margin: 0 0 0 50px;
+	margin: 0 0 0 15px;
 }
 
 .new {
-	border: 1px solid #333;
-	border-radius: 50px;
 	margin: 0 0 0 50px;
 	display: inline-block;
 }
 
 .new:hover {
+	box-shadow: inset 0px 0px 4px #333;
+	cursor: pointer;
+}
+
+.next-hand {
+	width: 130px;
+	display: inline-block;
+	text-align: left;
+	/*border: 1px solid red;*/
+}
+
+.next-hand:hover {
 	box-shadow: inset 0px 0px 4px #333;
 	cursor: pointer;
 }
@@ -83,10 +92,13 @@ header {
 	text-align: center;
 }
 
+	.button.hands-played h4 {
+		text-align: left;
+	}
+
 .hands-played {
 	border: none;
 	display: inline-block;
-	margin-left: 10px;
 }
 
 .cash {
@@ -103,9 +115,57 @@ header {
 
 /* DEALER SPACE */
 
-.dealer-container {
+/* CARD CONTAINER and CARDS */
+
+.card-container {
+	/*width: 50%;*/
+	height: 100%;
+	margin: 0 auto;
+	/*border: 1px solid springgreen;*/
+}
+
+.card {
+	width: 80px;
+	height: 100%;
+	border-radius: 10px;
+	border: 1px solid dimgray;
+	display: inline-block;
+	margin: 0 5px;
+	vertical-align: top;
+}
+
+.card-text {
 	width: 100%;
-	height: 150px;
+	margin: 15px auto;
+	/*border: 1px solid purple;*/
+}
+
+.card-suit {
+	width: 100%;
+	margin: 0px auto;
+	/*border: 1px solid purple;*/
+	
+	
+}
+
+.card-text h2 {
+	font-size: 35px;
+	line-height: 30px;
+}
+
+
+
+
+
+
+/* END CARDS */
+
+
+
+.container {
+	width: 100%;
+	height: 120px;
+	margin-top: 40px;
 	/*border: 1px solid dodgerblue;*/
 	text-align: center;
 }
