@@ -136,22 +136,41 @@ header {
 
 .card-text {
 	width: 100%;
-	margin: 15px auto;
+	margin: 10px auto;
 	/*border: 1px solid purple;*/
 }
 
 .card-suit {
 	width: 100%;
 	margin: 0px auto;
-	/*border: 1px solid purple;*/
-	
-	
+	/*border: 1px solid purple;	*/
 }
+
+	.card-suit.suit-right {
+		text-align: right;
+	}
+
+	.card-suit.suit-left {
+		text-align: left;
+	}
+
 
 .card-text h2 {
 	font-size: 35px;
 	line-height: 30px;
+	/*border: 1px solid blueviolet;*/
 }
+
+img {
+	height: 25px;
+	margin: 4px;
+}
+
+.hidden {
+	background: url("assets/back.jpg");
+	
+}
+
 
 
 
