@@ -186,19 +186,34 @@ header {
 
 /* FOOTER */
 
-.footer {
-	height: 40px;
-	width: 100%;
-	border: 1px solid #ddd;
-	text-align: center;
+.page-wrap {
+	min-height: 100%;
+	margin-bottom: -40px; 
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
 }
 	
-	.footer h6 {
-		font-size: 11px;
-		color: #bbb;
-		line-height: 40px;
-	}
+.footer, .page-wrap:after {
+	height: 40px; 
+}
+	
+.footer h6 {
+	font-size: 11px;
+	color: #bbb;
+	line-height: 40px;
+}
+	
+.footer {
+	width: 100%;
+	border-top: 1px solid #ddd;
+	text-align: center;
+}
 
 /* END FOOTER */
+
+
 
 
