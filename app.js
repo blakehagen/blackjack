@@ -214,6 +214,44 @@ $(document).ready(function(){
     
   });
   
+  // NEXT HAND //
+  
+   function nextHand(freshDeck){
+      playerHand = [];
+      player = 0;
+      dealerHand = [];
+      dealer = 0;
+      deck = freshDeck();
+      shuffle(deck);
+      deal(deck);
+    };
+  
+    $('#nextHand').on('click', function(){
+      nextHand(freshDeck);
+      handsPlayed = handsPlayed + 1;
+      
+      $('#handsPlayed').empty();
+      $('#handsPlayed').append(handsPlayed);
+      
+       $('#handsPlayed').empty();
+    $('#handsPlayed').append(handsPlayed);
+    
+    $('#dealerCards').empty();
+    $('#playerCards').empty();
+    
+    // to re-deal cards to dealer and player
+ 
+    $('#dealerCards').append('<div class="card hidden"></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id+ '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
+    
+    $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[0].imgTag + '</div><div class="card-text"><h2>' + playerHand[0].id+ '</h2></div><div class="card-suit suit-right">' + playerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + playerHand[1].imgTag + '</div><div class="card-text"><h2>' + playerHand[1].id+ '</h2></div><div class="card-suit suit-right">' + playerHand[1].bottomImg + '</div></div>');
+    
+    playerCount();
+    console.log("INITIAL PLAYER COUNT = " + player);
+      
+    });
+  
+  
+  
   // HIT PLAYER ACTION //
   
   $('.hit').on('click', function(){
