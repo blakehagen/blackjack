@@ -209,10 +209,11 @@ h4 p {
 /* PLAYER ACTION  */
 
 .playerAction {
-	margin: 15px 0;
+	margin: 15px 0 0 0;
 	width: 100%;
 	height: 24px;
 	text-align: center;
+	/*border: 1px solid red;*/
 }
 
 .playerButton {
@@ -236,6 +237,18 @@ h4 p {
 .playerButton h6 {
 	font-size: 14px;
 	margin: 3px 0;
+}
+
+.wager {
+	margin: 8px 0 0 0;
+}
+
+.betButton {
+	width: 90px;
+	height: 20px;
+	margin-top: 0;
+	font-family: 'Play', sans-serif;
+	font-size: 12px;
 }
 
 /* END PLAYER ACTION */
