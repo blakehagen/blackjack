@@ -29,7 +29,7 @@ header {
 
 	header .item {
 		/*border: 1px solid palevioletred;*/
-		width: 30%;
+		width: 35%;
 		margin: 0 50px 0 70px;
 		display: inline-block;
 	}
@@ -51,20 +51,18 @@ header {
 
 .top-content {
 	width: 100%;
-	/*border: 1px solid darkorange;*/
 }
 
 .button {
-	width: 180px;
+	width: 140px;
 	height: 40px;
 	border: 1px solid #333;
 	border-radius: 50px;
-	margin: 0 0 0 15px;
 }
 
 .new {
-	margin: 0 0 0 50px;
 	display: inline-block;
+	margin: 0 0 0 150px;
 }
 
 .new:hover {
@@ -73,10 +71,8 @@ header {
 }
 
 .next-hand {
-	width: 130px;
 	display: inline-block;
-	text-align: left;
-	/*border: 1px solid red;*/
+	margin: 0 0 0 15px;
 }
 
 .next-hand:hover {
@@ -91,24 +87,20 @@ header {
 	text-align: center;
 }
 
-	.button.hands-played h4 {
-		text-align: left;
-	}
-
 .hands-played {
 	border: none;
 	display: inline-block;
+	margin: 0 15px 0 0;
+	/*border: 1px solid red;*/
 }
 
 .cash {
-	width: 400px;
 	border: none;
 	display: inline-block;
-	margin: 0 50px 0 0;
+	margin: 0 150px 0 0;
+	/*border: 1px solid red;*/
 }
-	.cash h4 {
-		text-align: left;
-	}
+
 
 /* END TOP CONTENT */
 
@@ -173,7 +165,7 @@ img {
 .container {
 	width: 100%;
 	height: 120px;
-	margin-top: 40px;
+	margin-top: 15px;
 	/*border: 1px solid dodgerblue;*/
 	text-align: center;
 }
@@ -220,7 +212,6 @@ h4 p {
 	margin: 15px 0;
 	width: 100%;
 	height: 24px;
-	/*border: 1px solid darkorchid;*/
 	text-align: center;
 }
 
@@ -231,10 +222,6 @@ h4 p {
 	border-radius: 10px;
 	display: inline-block;
 	text-align: center;
-}
-
-.playerButton:hover {
-	box-shadow: inset 0px 0px 4px forestgreen;
 	cursor: pointer;
 }
 
@@ -285,4 +272,131 @@ h4 p {
 
 
 
+/* MEDIA QUERIES */
 
+@media (max-width: 1000px){
+	.new {
+		margin: 0 0 0 70px;
+	}
+	
+	.cash {
+		margin: 0 70px 0 0;
+	}
+}
+
+@media (max-width: 930px){
+	
+	.cash {
+		margin: 0 20px 0 0;
+	}
+	
+	.new {
+		margin: 0 0 0 20px;
+	}
+}
+
+@media (max-width: 900px){
+	
+	/*.top-content {
+		text-align: center;
+	}*/
+}
+
+
+@media (max-width: 870px){
+	header .item {
+		width: 40%;
+		margin: 0 20px 0 20px;
+		display: inline-block;
+	}
+	.new {
+		margin: 0 0 0 20px;
+	}
+	
+	.cash {
+		/*margin: 0 0 0 20px;*/
+	}
+}
+
+@media (max-width: 760px){
+	
+	header {
+		height: auto;
+		margin-bottom: 20px;
+	}
+	header .item {
+		width: 70%;
+		margin: 0px 0px 0 50px;
+		float: none;
+	}
+	
+	.item h1 {
+		font-size: 36px;
+		line-height: 40px;
+		margin-top: 20px;
+	}
+	
+	.item h6 {
+		font-size: 14px;
+		line-height: 14px;
+		text-align: left;
+		margin: 0;
+	}
+
+	.button {
+		width: 100px;
+		height: 30px;
+	}
+
+	.button h4 {
+		font-size: 14px;
+		line-height: 29px;
+	}
+	
+	.new {
+		margin: 0 0 0 50px;
+	}
+	
+	.cash {
+		margin: 0 50px 0 0;
+	}
+}
+
+@media (max-width: 600px){
+
+	.new {
+		display: inline;
+	}
+	
+	.next-hand {
+		display: inline;	
+	}
+	
+	.hands-played {
+		display: inline;
+		float: none;	
+	}
+	
+	.cash {
+		display: inline;
+		float: none;	
+	}
+	
+	.button {
+		border: none;
+		margin: 0 0 0 50px;
+	}
+	
+	.button h4 {
+		text-align: left;
+		line-height: 12px;
+	}
+	
+	.top-content {
+		margin-left: 50px;
+	}
+
+
+
+
+}

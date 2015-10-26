@@ -162,13 +162,9 @@ $(document).ready(function(){
   // // // // PLAYER HIT FUNCTION // // // //
   
   function hitPlayer(){
-    console.log(deck);
-    console.log(deck[0]);
     playerHand.push(deck[0]);
-
     deck.splice(0,1);
-    player = player + deck[0].value;
-    console.log(playerHand);
+    player = player + playerHand[playerHand.length-1].value;
   }
   
   // // // // DEALER HIT FUNCTION // // // //
@@ -214,8 +210,7 @@ $(document).ready(function(){
     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[0].imgTag + '</div><div class="card-text"><h2>' + playerHand[0].id+ '</h2></div><div class="card-suit suit-right">' + playerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + playerHand[1].imgTag + '</div><div class="card-text"><h2>' + playerHand[1].id+ '</h2></div><div class="card-suit suit-right">' + playerHand[1].bottomImg + '</div></div>');
     
     playerCount();
-    console.log("PLAYER COUNT = " + player);
-    console.log(playerHand.length);
+    console.log("INITIAL PLAYER COUNT = " + player);
     
   });
   
@@ -225,8 +220,7 @@ $(document).ready(function(){
     hitPlayer();
      $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[playerHand.length-1].imgTag + '</div><div class="card-text"><h2>' + playerHand[playerHand.length-1].id + '</h2></div><div class="card-suit suit-right">' + playerHand[playerHand.length-1].bottomImg + '</div></div>');
      
-     console.log("PLAYER COUNT = " + player);
-     console.log(playerHand.length);
+     console.log("PLAYER COUNT AFTER HIT = " + player);
      console.log(playerHand);
      
      if(player > 21) {
