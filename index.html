@@ -20,7 +20,7 @@
 	
 	
 		<div class="top-content">
-			<div class="button new">
+			<div class="button new" id="startNewGame">
 				<h4>Start New Game</h4>
 			</div>
 			
@@ -33,59 +33,13 @@
 			</div>
 			
 			<div class="button cash right">
-				<h4><i class="fa fa-usd"></i> Cash:</h4>
+				<h4><i class="fa fa-usd"></i> Cash:&nbsp;&nbsp; <span id="cashCount"></span></h4>
 			</div>
 		</div>
 			
 		<div class="container">
-			<div class="card-container">
-				<div class="card">
-					<div class="card-suit suit-left">
-						<img src="assets/heart.png">
-					</div>
-					<div class="card-text">
-						<h2>A</h2>
-					</div>
-					<div class="card-suit suit-right">
-						<img src="assets/heart-inverted.png">
-					</div>
-				</div>
+			<div class="card-container" id="dealerCards">
 				
-				<div class="card">
-					<div class="card-suit suit-left">
-						<img src="assets/club.png">
-					</div>
-					<div class="card-text">
-						<h2>A</h2>
-					</div>
-					<div class="card-suit suit-right">
-						<img src="assets/club-inverted.png">
-					</div>
-				</div>
-				
-				<div class="card">
-					<div class="card-suit suit-left">
-						<img src="assets/diamond.png">
-					</div>
-					<div class="card-text">
-						<h2>A</h2>
-					</div>
-					<div class="card-suit suit-right">
-						<img src="assets/diamond-inverted.png">
-					</div>
-				</div>
-				
-				<div class="card">
-					<div class="card-suit suit-left">
-						<img src="assets/spade.png">
-					</div>
-					<div class="card-text">
-						<h2>A</h2>
-					</div>
-					<div class="card-suit suit-right">
-						<img src="assets/spade-inverted.png">
-					</div>
-				</div>
 			</div>
 		</div>
 		
@@ -100,61 +54,19 @@
 						<p>Dealer must hit on soft 17</p>
 					</h4>
 				</div>
+				
+				<div class="rules-box">
+					<h4>House Rules
+						<p>Blackjack pays&nbsp;&nbsp; 3 &nbsp; : &nbsp; 2</p>
+						<p>Max Bet &nbsp; = &nbsp; No Limit</p>
+						<p>Have fun!</p>
+					</h4>
+				</div>
 			</div>
 		</div>
 		
 		<div class="container">
-			<div class="card-container">
-				<div class="card">
-					<div class="card-suit suit-left">
-						<img src="assets/heart.png">
-					</div>
-					<div class="card-text">
-						<h2>K</h2>
-					</div>
-					<div class="card-suit suit-right">
-						<img src="assets/heart-inverted.png">
-					</div>
-				</div>
-				
-				<div class="card">
-					<div class="card-suit suit-left">
-						<img src="assets/club.png">
-					</div>
-					<div class="card-text">
-						<h2>K</h2>
-					</div>
-					<div class="card-suit suit-right">
-						<img src="assets/club-inverted.png">
-					</div>
-				</div>
-				
-				<div class="card">
-					<div class="card-suit suit-left">
-						<img src="assets/diamond.png">
-					</div>
-					<div class="card-text">
-						<h2>K</h2>
-					</div>
-					<div class="card-suit suit-right">
-						<img src="assets/diamond-inverted.png">
-					</div>
-				</div>
-				
-				<div class="card">
-					<div class="card-suit suit-left">
-						<img src="assets/spade.png">
-					</div>
-					<div class="card-text">
-						<h2>K</h2>
-					</div>
-					<div class="card-suit suit-right">
-						<img src="assets/spade-inverted.png">
-					</div>
-				</div>
-				
-				<div class="card hidden">
-				</div>
+			<div class="card-container" id="playerCards">
 			</div>
 		</div>
 	</div>
