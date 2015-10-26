@@ -91,7 +91,7 @@ $(document).ready(function(){
     
     var kingHearts = new Card("king", "hearts","K", 10);
     var kingSpades = new Card("king", "spades", "K", 10);
-    var kingClubs = new Card("king", "clubs", "J", 10);
+    var kingClubs = new Card("king", "clubs", "K", 10);
     var kingDiamonds = new Card("king", "diamonds", "K", 10);
     
     var aceHearts = new Card("ace", "hearts", "A", 11, 1);

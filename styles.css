@@ -1,8 +1,11 @@
+* {
+	box-sizing: border-box;
+}
+
 html, body {
 	margin: 0;
 	width: 100%;
 	height: 100%;
-	box-sizing: border-box;
 }
 
 h1,h2,h3,h4,h5,h6 {	
@@ -236,19 +239,34 @@ h4 p {
 
 .playerButton h6 {
 	font-size: 14px;
-	margin: 3px 0;
+	margin: 2px 0;
 }
 
 .wager {
 	margin: 8px 0 0 0;
 }
 
+input {
+	cursor: text;
+}
+
 .betButton {
 	width: 90px;
-	height: 20px;
-	margin-top: 0;
+	height: 24px;
 	font-family: 'Play', sans-serif;
 	font-size: 12px;
+	display: inline-block
+}
+
+.submit {
+    width: 50px;
+    height: 24px;
+    vertical-align: top;
+    line-height: 23px;
+}
+
+.submit:hover {
+	box-shadow: inset 0px 0px 2px #333;
 }
 
 /* END PLAYER ACTION */
