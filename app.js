@@ -145,9 +145,11 @@ $(document).ready(function(){
   // // // // SET ORIGINAL HAND VALUES // // // //
   
   // PLAYER
+  
+
   function playerCount(){
-    player = playerHand[0].value + playerHand[1].value;
-    return player;
+      player = playerHand[0].value + playerHand[1].value;
+    // return player;
   }
   
   // DEALER
@@ -161,8 +163,8 @@ $(document).ready(function(){
   
   function hitPlayer(){
     playerHand.push(deck[0]);
-    player = player + playerHand[playerHand.length-1].value;
     deck.splice(0,1);
+    player = player + deck[0].value;
   }
   
   // // // // DEALER HIT FUNCTION // // // //
@@ -200,7 +202,6 @@ $(document).ready(function(){
     $('#handsPlayed').empty();
     $('#handsPlayed').append(handsPlayed);
     
-    
     $('#dealerCards').empty();
     $('#playerCards').empty();
  
@@ -208,8 +209,25 @@ $(document).ready(function(){
     
     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[0].imgTag + '</div><div class="card-text"><h2>' + playerHand[0].id+ '</h2></div><div class="card-suit suit-right">' + playerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + playerHand[1].imgTag + '</div><div class="card-text"><h2>' + playerHand[1].id+ '</h2></div><div class="card-suit suit-right">' + playerHand[1].bottomImg + '</div></div>');
     
+    playerCount();
+    console.log("PLAYER COUNT = " + player);
+    console.log(playerHand.length);
     
   });
+  
+  // HIT PLAYER ACTION //
+  
+  $('.hit').on('click', function(){
+    hitPlayer();
+     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + deck[0].imgTag + '</div><div class="card-text"><h2>' + deck[0].id+ '</h2></div><div class="card-suit suit-right">' + deck[0].bottomImg + '</div></div>');
+     
+     console.log("PLAYER COUNT = " + player);
+     console.log(playerHand.length);
+    
+  })
+  
+  
+  
     
     
     
