@@ -188,7 +188,7 @@ $(document).ready(function(){
     dealer = 0;
     deck = freshDeck();
     shuffle(deck);
-    deal(deck);
+    bet = 0;
   };
   
   // On "Start New Game" button click, activate above function //
@@ -205,6 +205,32 @@ $(document).ready(function(){
     $('#dealerCards').empty();
     $('#playerCards').empty();
  
+  });
+  
+  
+  // PLACE BET   AND DEAL  //
+  
+  var bet = 0;
+  
+  function placeBet(){
+      bet = $('#bet').val();
+      cashCount = cashCount - bet;
+      console.log(bet);
+      console.log(cashCount);
+      $('')
+      deal(deck);
+  }
+  
+  $('#place-bet').on('click', function(){
+    placeBet();
+    $('#cashCount').text(cashCount);
+    $('#bet').val('');
+    
+    handsPlayed = handsPlayed + 1;
+    $('#handsPlayed').empty();
+    $('#handsPlayed').append(handsPlayed);
+    
+    // DEAL THE CARDS ONCE BET IS SUBMITTED //
     $('#dealerCards').append('<div class="card hidden"></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id+ '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
     
     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[0].imgTag + '</div><div class="card-text"><h2>' + playerHand[0].id+ '</h2></div><div class="card-suit suit-right">' + playerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + playerHand[1].imgTag + '</div><div class="card-text"><h2>' + playerHand[1].id+ '</h2></div><div class="card-suit suit-right">' + playerHand[1].bottomImg + '</div></div>');
@@ -213,6 +239,10 @@ $(document).ready(function(){
     console.log("INITIAL PLAYER COUNT = " + player);
     
   });
+  
+  
+  
+  
   
   // NEXT HAND //
   
@@ -223,30 +253,14 @@ $(document).ready(function(){
       dealer = 0;
       deck = freshDeck();
       shuffle(deck);
-      deal(deck);
+      bet = 0;
     };
   
     $('#nextHand').on('click', function(){
       nextHand(freshDeck);
-      handsPlayed = handsPlayed + 1;
-      
-      $('#handsPlayed').empty();
-      $('#handsPlayed').append(handsPlayed);
-      
-       $('#handsPlayed').empty();
-    $('#handsPlayed').append(handsPlayed);
     
     $('#dealerCards').empty();
     $('#playerCards').empty();
-    
-    // to re-deal cards to dealer and player
- 
-    $('#dealerCards').append('<div class="card hidden"></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id+ '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
-    
-    $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[0].imgTag + '</div><div class="card-text"><h2>' + playerHand[0].id+ '</h2></div><div class="card-suit suit-right">' + playerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + playerHand[1].imgTag + '</div><div class="card-text"><h2>' + playerHand[1].id+ '</h2></div><div class="card-suit suit-right">' + playerHand[1].bottomImg + '</div></div>');
-    
-    playerCount();
-    console.log("INITIAL PLAYER COUNT = " + player);
       
     });
   
@@ -264,8 +278,37 @@ $(document).ready(function(){
      if(player > 21) {
        alert("PLAYER BUST! YOU LOSE!");
      };
+  })
+  
+  
+  // PLAYER STAY  -- locks in player value and triggers dealers hand //
+  
+  $('#stay-button').on('click', function(){
+    
+    // show dealer's hidden card //
+    $('#dealerCards').empty();
+    $('#dealerCards').append('<div class="card"><div class="card-suit suit-left">' + dealerHand[0].imgTag + '</div><div class="card-text"><h2>' + dealerHand[0].id+ '</h2></div><div class="card-suit suit-right">' + dealerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id+ '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
+    dealerCount();
+    console.log("PLAYER TOTAL: " + player);
+    console.log("DEALER TOTAL: " + dealer);
+    // console.log(cashCount);
+    console.log(bet);
+    if(player  <= 21){
+      alert("21! YOU WON");
+      
+      $('#cashCount').empty();
+      cashCount = parseInt(cashCount) + parseInt(bet)*2;
+      console.log(cashCount);
+      $('#cashCount').append(cashCount);
+    }
     
   })
+  
+  // // // GAME LOGIC // // //
+  
+  function gameLogic(){
+    
+  }
   
   
   
