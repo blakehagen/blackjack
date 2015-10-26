@@ -162,9 +162,13 @@ $(document).ready(function(){
   // // // // PLAYER HIT FUNCTION // // // //
   
   function hitPlayer(){
+    console.log(deck);
+    console.log(deck[0]);
     playerHand.push(deck[0]);
+
     deck.splice(0,1);
     player = player + deck[0].value;
+    console.log(playerHand);
   }
   
   // // // // DEALER HIT FUNCTION // // // //
@@ -219,12 +223,19 @@ $(document).ready(function(){
   
   $('.hit').on('click', function(){
     hitPlayer();
-     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + deck[0].imgTag + '</div><div class="card-text"><h2>' + deck[0].id+ '</h2></div><div class="card-suit suit-right">' + deck[0].bottomImg + '</div></div>');
+     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[playerHand.length-1].imgTag + '</div><div class="card-text"><h2>' + playerHand[playerHand.length-1].id + '</h2></div><div class="card-suit suit-right">' + playerHand[playerHand.length-1].bottomImg + '</div></div>');
      
      console.log("PLAYER COUNT = " + player);
      console.log(playerHand.length);
+     console.log(playerHand);
+     
+     if(player > 21) {
+       alert("PLAYER BUST! YOU LOSE!");
+     };
     
   })
+  
+  
   
   
   
