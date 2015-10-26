@@ -175,9 +175,11 @@ $(document).ready(function(){
   
   // // // // RESET HANDS BACK TO ZERO and RESET DECK and NEW DEAL // // // //
   var cashCount = 500;
+  var handsPlayed = 0;
   
   function startNewGame(freshDeck){
     cashCount = 500;
+    handsPlayed = 0;
     playerHand = [];
     player = 0;
     dealerHand = [];
@@ -195,7 +197,8 @@ $(document).ready(function(){
     $('#cashCount').empty();
     $('#cashCount').append(cashCount);
     
-    
+    $('#handsPlayed').empty();
+    $('#handsPlayed').append(handsPlayed);
     
     
     $('#dealerCards').empty();
