@@ -220,9 +220,9 @@ $(document).ready(function () {
   function placeBet() {
 
     bet = $('#bet').val();
-    
-    
-    
+
+
+
 
 
     if (parseInt(bet) > parseInt(cashCount)) {
@@ -239,9 +239,9 @@ $(document).ready(function () {
     } else {
       cashCount = cashCount - bet;
       validBet = true;
-      
+
       deal(deck);
-      
+
     }
   }
 
@@ -250,7 +250,7 @@ $(document).ready(function () {
   $('#place-bet').on('click', function () {
 
     placeBet();
-    
+
     if (validBet !== true) {
       return false;
     }
@@ -340,7 +340,25 @@ $(document).ready(function () {
       $('#cashCount').append(cashCount);
     }
 
-  })
+  });
+  
+  // // // MESSAGE CENTER // // //
+  
+  var messages = {
+    start: 'Click "New Game" to play blackJack 1.0',
+    placeBet: 'Place your bet!',
+    betError1: 'Enter your bet!',
+    betError2: 'Enter a valid bet!',
+    betError3: 'You don\'t have that much money!',
+    playerAction: 'Hit or Stay?',
+    playerBust: 'You busted!',
+    dealerBust: 'Dealer busted! YOU WIN!',
+    push: 'Push',
+    player21: 'Blackjack! YOU WIN!',
+    dealer21: 'Dealer Blackjack. You lost!'
+  };
+  
+  
   
   // // // GAME LOGIC // // //
   
