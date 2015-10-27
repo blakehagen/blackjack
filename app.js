@@ -224,6 +224,16 @@ $(document).ready(function () {
 
     bet = $('#bet').val();
 
+    if (parseInt(cashCount) === 0) {
+      validBet = false;
+      $('#message-text').empty();
+      $('#message-text').append('<h6>' + messages.betError4 + '</h6>');
+      $('#bet').hide();
+      $('#place-bet').hide();
+      $('#nextHand').hide();
+      return false;
+    };
+
     if (parseInt(bet) > parseInt(cashCount)) {
       validBet = false;
       $('#bet').val('');
@@ -272,6 +282,7 @@ $(document).ready(function () {
     $('#hit').show();
     $('#bet').hide();
     $('#place-bet').hide();
+    $('#nextHand').hide();
     
     // DEAL THE CARDS ONCE BET IS SUBMITTED //
     $('#dealerCards').append('<div class="card hidden"></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
@@ -371,6 +382,7 @@ $(document).ready(function () {
     betError1: 'You didn\'t place your bet!',
     betError2: 'Enter a valid bet!',
     betError3: 'You don\'t have that much money!',
+    betError4: 'You\'re broke! Start a new game!',
     playerAction: 'Hit or Stay?',
     playerBust: 'You busted!',
     dealerBust: 'Dealer busted! YOU WIN!',
