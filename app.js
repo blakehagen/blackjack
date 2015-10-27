@@ -1,5 +1,10 @@
 $(document).ready(function () {
   
+  // $('#nextHand').hide();
+  // $('#stay-button').hide();
+  // $('#hit').hide();
+  
+  
   
 
         
@@ -268,7 +273,7 @@ $(document).ready(function () {
   
   // HIT PLAYER ACTION //
   
-  $('.hit').on('click', function () {
+  $('#hit').on('click', function () {
     hitPlayer();
     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[playerHand.length - 1].imgTag + '</div><div class="card-text"><h2>' + playerHand[playerHand.length - 1].id + '</h2></div><div class="card-suit suit-right">' + playerHand[playerHand.length - 1].bottomImg + '</div></div>');
 
@@ -305,10 +310,10 @@ $(document).ready(function () {
   
   // // // GAME LOGIC // // //
   
-  function gameLogic() {
-    if()
+  // function gameLogic() {
+  //   if()
 
-  }
+  // }
 
 
 
