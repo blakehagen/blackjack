@@ -197,6 +197,9 @@ $(document).ready(function () {
   $('#startNewGame').on('click', function () {
     startNewGame(freshDeck);
 
+    $('#message-text').empty();
+    $('#message-text').append('<h6>' + messages.placeBet + '</h6>');
+
     $('#bet').show();
     $('#place-bet').show();
 
@@ -221,30 +224,31 @@ $(document).ready(function () {
 
     bet = $('#bet').val();
 
-
-
-
-
     if (parseInt(bet) > parseInt(cashCount)) {
       validBet = false;
       $('#bet').val('');
-      alert("You don't have that much money!");
+      $('#message-text').empty();
+      $('#message-text').append('<h6>' + messages.betError3 + '</h6>');
     } else if (isNaN(bet) === true) {
       validBet = false;
       $('#bet').val('');
-      alert("Not a valid bet.");
+      $('#message-text').empty();
+      $('#message-text').append('<h6>' + messages.betError2 + '</h6>');
     } else if (!bet) {
       validBet = false;
-      alert("Enter your bet.");
+      $('#message-text').empty();
+      $('#message-text').append('<h6>' + messages.betError1 + '</h6>');
     } else {
       cashCount = cashCount - bet;
       validBet = true;
 
       deal(deck);
 
+      $('#message-text').empty();
+      $('#message-text').append('<h6>' + messages.playerAction + '</h6>');
+
     }
   }
-
 
 
   $('#place-bet').on('click', function () {
@@ -292,7 +296,7 @@ $(document).ready(function () {
     dealer = 0;
     deck = freshDeck();
     shuffle(deck);
-    bet = 0;
+    // bet = 0;
   };
 
   $('#nextHand').on('click', function () {
@@ -300,6 +304,13 @@ $(document).ready(function () {
 
     $('#dealerCards').empty();
     $('#playerCards').empty();
+
+    $('#message-text').empty();
+    $('#message-text').append('<h6>' + messages.placeBet + '</h6>');
+
+    $('#bet').show();
+    $('#place-bet').show();
+
 
   });
   
@@ -315,9 +326,19 @@ $(document).ready(function () {
     console.log(playerHand);
 
     if (player > 21) {
-      alert("PLAYER BUST! YOU LOSE!");
+      $('#message-text').empty();
+      $('#message-text').append('<h6>' + messages.playerBust + '</h6>');
+
+      $('#hit').hide();
+      $('#stay-button').hide();
+
+      $('#nextHand').show();
+
+
+
+
     };
-  })
+  });
   
   
   // PLAYER STAY  -- locks in player value and triggers dealers hand //
@@ -347,7 +368,7 @@ $(document).ready(function () {
   var messages = {
     start: 'Click "New Game" to play blackJack 1.0',
     placeBet: 'Place your bet!',
-    betError1: 'Enter your bet!',
+    betError1: 'You didn\'t place your bet!',
     betError2: 'Enter a valid bet!',
     betError3: 'You don\'t have that much money!',
     playerAction: 'Hit or Stay?',
