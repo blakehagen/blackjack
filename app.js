@@ -1,12 +1,10 @@
 $(document).ready(function () {
-  
-  // $('#nextHand').hide();
-  // $('#stay-button').hide();
-  // $('#hit').hide();
-  
-  
-  
 
+  $('#nextHand').hide();
+  $('#stay-button').hide();
+  $('#hit').hide();
+  $('#bet').hide();
+  $('#place-bet').hide();
         
   // // // Card Constructor // // //
   var Card = function (card, suit, id, value, altValue) {
@@ -151,7 +149,6 @@ $(document).ready(function () {
   
   // PLAYER
   
-
   function playerCount() {
     player = playerHand[0].value + playerHand[1].value;
     // return player;
@@ -160,9 +157,8 @@ $(document).ready(function () {
   // DEALER
   function dealerCount() {
     dealer = dealerHand[0].value + dealerHand[1].value;
-    return dealer;
+    // return dealer;
   }
-  
   
   // // // // PLAYER HIT FUNCTION // // // //
   
@@ -180,7 +176,7 @@ $(document).ready(function () {
     deck.splice(0, 1);
   }
   
-  // // // // RESET HANDS BACK TO ZERO and RESET DECK and NEW DEAL // // // //
+  // // // // RESET HANDS BACK TO ZERO, RESET DECK , RESET BET // // // //
   var cashCount = 500;
   var handsPlayed = 0;
 
@@ -201,6 +197,9 @@ $(document).ready(function () {
   $('#startNewGame').on('click', function () {
     startNewGame(freshDeck);
 
+    $('#bet').show();
+    $('#place-bet').show();
+
     $('#cashCount').empty();
     $('#cashCount').append(cashCount);
 
@@ -213,27 +212,61 @@ $(document).ready(function () {
   });
   
   
-  // PLACE BET   AND DEAL  //
+  // PLACE BET AND DEAL  //
   
   var bet = 0;
+  var validBet = false;
 
   function placeBet() {
+
     bet = $('#bet').val();
-    cashCount = cashCount - bet;
-    console.log(bet);
-    console.log(cashCount);
-    $('')
-    deal(deck);
+    
+    
+    
+
+
+    if (parseInt(bet) > parseInt(cashCount)) {
+      validBet = false;
+      $('#bet').val('');
+      alert("You don't have that much money!");
+    } else if (isNaN(bet) === true) {
+      validBet = false;
+      alert("Not a valid bet.");
+    } else if (!bet) {
+      validBet = false;
+      alert("Enter your bet.");
+    } else {
+      cashCount = cashCount - bet;
+      validBet = true;
+      
+      deal(deck);
+      
+    }
   }
 
+
+
   $('#place-bet').on('click', function () {
+
     placeBet();
+    
+    if (validBet !== true) {
+      return false;
+    }
+
     $('#cashCount').text(cashCount);
     $('#bet').val('');
 
     handsPlayed = handsPlayed + 1;
     $('#handsPlayed').empty();
-    $('#handsPlayed').append(handsPlayed);
+    $('#handsPlayed').append(parseInt(handsPlayed));
+    
+    // Show Hit & Stand Buttons ---- Hide Bet Buttons //
+    
+    $('#stay-button').show();
+    $('#hit').show();
+    $('#bet').hide();
+    $('#place-bet').hide();
     
     // DEAL THE CARDS ONCE BET IS SUBMITTED //
     $('#dealerCards').append('<div class="card hidden"></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
@@ -298,7 +331,7 @@ $(document).ready(function () {
     console.log("DEALER TOTAL: " + dealer);
 
     console.log(bet);
-    if (player === 21){
+    if (player === 21) {
       alert("21! YOU WON");
 
       $('#cashCount').empty();
