@@ -231,6 +231,7 @@ $(document).ready(function () {
       alert("You don't have that much money!");
     } else if (isNaN(bet) === true) {
       validBet = false;
+      $('#bet').val('');
       alert("Not a valid bet.");
     } else if (!bet) {
       validBet = false;
