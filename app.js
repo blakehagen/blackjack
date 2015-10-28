@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  
+  // HIDE NON_ESSENTIAL BUTTONS ON LOAD //
 
   $('#nextHand').hide();
   $('#stay-button').hide();
@@ -6,7 +8,8 @@ $(document).ready(function () {
   $('#bet').hide();
   $('#place-bet').hide();
         
-  // // // Card Constructor // // //
+  // Card Constructor //
+  
   var Card = function (card, suit, id, value, altValue) {
     this.card = card;
     this.suit = suit;
@@ -31,7 +34,7 @@ $(document).ready(function () {
     }
   };
   
-  // // // // GET FRESH DECK OF CARDS // // // //
+  // GET FRESH DECK OF CARDS //
   
   function freshDeck() {
 
@@ -108,9 +111,8 @@ $(document).ready(function () {
     return deck;
   };
   
-  //var deck = freshDeck(); // --> returns unshuffled fresh deck of cards
   
-  // // // // FUNCTION TO SHUFFLE THE DECK (("Fisher-Yates" Algorithm)) // // // //
+  // FUNCTION TO SHUFFLE THE DECK ("Fisher-Yates" Algorithm) // 
   
   function shuffle(array) {
     var m = array.length, t, i;
@@ -126,11 +128,11 @@ $(document).ready(function () {
     return array;
   }
   
-  // // // // SHUFFLE THE DECK // // // //
+  // SHUFFLE THE DECK //
   
-  //shuffle(deck); // --> Now you have a shuffled deck! //
+  // shuffle(deck);  --> Now you have a shuffled deck! //
   
-  // // // // DEAL // // // //
+  //  DEAL //
   
   var playerHand = [];
   var player = 0;
@@ -143,9 +145,7 @@ $(document).ready(function () {
     arr.splice(0, 4);
   };
   
-  //deal(deck);
-  
-  // // // // SET ORIGINAL HAND VALUES // // // //
+  // SET STARTING HAND VALUES //
   
   // PLAYER
   
@@ -155,12 +155,13 @@ $(document).ready(function () {
   }
   
   // DEALER
+  
   function dealerCount() {
     dealer = dealerHand[0].value + dealerHand[1].value;
     // return dealer;
   }
   
-  // // // // PLAYER HIT FUNCTION // // // //
+  // PLAYER HIT FUNCTION //
   
   function hitPlayer() {
     playerHand.push(deck[0]);
@@ -168,7 +169,7 @@ $(document).ready(function () {
     player = player + playerHand[playerHand.length - 1].value;
   }
   
-  // // // // DEALER HIT FUNCTION // // // //
+  // DEALER HIT FUNCTION //
   
   function hitDealer() {
     dealerHand.push(deck[0]);
@@ -176,7 +177,7 @@ $(document).ready(function () {
     deck.splice(0, 1);
   }
   
-  // // // // RESET HANDS BACK TO ZERO, RESET DECK , RESET BET // // // //
+  // RESET HANDS BACK TO ZERO, RESET DECK , RESET BET //
   var cashCount = 500;
   var handsPlayed = 0;
 
@@ -211,9 +212,7 @@ $(document).ready(function () {
 
     $('#dealerCards').empty();
     $('#playerCards').empty();
-
   });
-  
   
   // PLACE BET AND DEAL  //
   
@@ -223,18 +222,6 @@ $(document).ready(function () {
   function placeBet() {
 
     bet = $('#bet').val();
-
-    // if (parseInt(cashCount) === 0) {
-    //   validBet = false;
-    //   $('#message-text').empty();
-    //   $('#message-text').append('<h6>' + messages.betError4 + '</h6>');
-    //   $('#bet').hide();
-    //   $('#place-bet').hide();
-    //   $('#nextHand').hide();
-    //   $('#dealerCards').empty();
-    //   $('#playerCards').empty();
-    //   return false;
-    // };
 
     if (parseInt(bet) > parseInt(cashCount)) {
       validBet = false;
@@ -260,8 +247,9 @@ $(document).ready(function () {
       $('#message-text').append('<h6>' + messages.playerAction + '</h6>');
 
     }
-  }
-
+  };
+  
+  // PLACE BET FUNCTION INVOKE ON CLICK //
 
   $('#place-bet').on('click', function () {
 
@@ -286,7 +274,7 @@ $(document).ready(function () {
     $('#place-bet').hide();
     $('#nextHand').hide();
     
-    // DEAL THE CARDS ONCE BET IS SUBMITTED //
+    // DEAL CARDS ONCE BET IS SUBMITTED //
     $('#dealerCards').append('<div class="card hidden"></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
 
     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[0].imgTag + '</div><div class="card-text"><h2>' + playerHand[0].id + '</h2></div><div class="card-suit suit-right">' + playerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + playerHand[1].imgTag + '</div><div class="card-text"><h2>' + playerHand[1].id + '</h2></div><div class="card-suit suit-right">' + playerHand[1].bottomImg + '</div></div>');
@@ -294,8 +282,14 @@ $(document).ready(function () {
     playerCount();
     console.log("INITIAL PLAYER COUNT = " + player);
 
+    if (player === 21) {
+      $('#message-text').empty();
+      $('#message-text').append('<h6>' + messages.player21 + '</h6>');
+      $('#cashCount').empty();
+      cashCount = parseInt(cashCount) + ((parseInt(bet) * 1.5));
+      $('#cashCount').append(cashCount);
+    }
   });
-  
   
   // YOU'RE BROKE FUNCTION //
   
@@ -314,10 +308,6 @@ $(document).ready(function () {
     return true;
   };
   
-  
-  
-  
-  
   // NEXT HAND //
   
   function nextHand(freshDeck) {
@@ -332,9 +322,8 @@ $(document).ready(function () {
 
   $('#nextHand').on('click', function () {
     nextHand(freshDeck);
-    console.log('bet = ' + bet);
     broke();
-    if(broke() === false){
+    if (broke() === false) {
       return false;
     }
 
@@ -346,13 +335,7 @@ $(document).ready(function () {
 
     $('#bet').show();
     $('#place-bet').show();
-    
-    
-
-
   });
-  
-  
   
   // HIT PLAYER ACTION //
   
@@ -373,8 +356,7 @@ $(document).ready(function () {
       $('#nextHand').show();
     };
   });
-  
-  
+   
   // PLAYER STAY  -- locks in player value and triggers dealers hand //
   
   $('#stay-button').on('click', function () {
@@ -385,19 +367,9 @@ $(document).ready(function () {
     dealerCount();
     console.log("PLAYER TOTAL: " + player);
     console.log("DEALER TOTAL: " + dealer);
-
-    console.log(bet);
-    if (player === 21) {
-      alert("21! YOU WON");
-
-      $('#cashCount').empty();
-      cashCount = parseInt(cashCount) + parseInt(bet) * 2;
-      $('#cashCount').append(cashCount);
-    }
-
   });
   
-  // // // MESSAGE CENTER // // //
+  // MESSAGE CENTER //
   
   var messages = {
     start: 'Click "New Game" to play blackJack 1.0',
@@ -413,8 +385,6 @@ $(document).ready(function () {
     player21: 'Blackjack! YOU WIN!',
     dealer21: 'Dealer Blackjack. You lost!'
   };
-  
-  
   
   // // // GAME LOGIC // // //
   
