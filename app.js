@@ -32,14 +32,6 @@ $(document).ready(function () {
       this.imgTag = '<img src="assets/diamond.png">';
       this.bottomImg = '<img src="assets/diamond-inverted.png">';
     }
-
-    if (id === "A") {
-      this.aceMethod = function () {
-        if (player > 21) {
-          this.value = 1;
-        }
-      }
-    }
   };
   
   // GET FRESH DECK OF CARDS //
@@ -175,10 +167,17 @@ $(document).ready(function () {
     playerHand.push(deck[0]);
     deck.splice(0, 1);
     player = player + playerHand[playerHand.length - 1].value;
-    
-    
-    
-    
+
+    for (var i = 0; i < playerHand.length; i++) {
+      if (playerHand[i].id === "A" && player > 21) {
+        console.log("YOU HAVE AN ACE!");
+        playerHand[i].value = 1;
+        player = 0;
+        player = player + playerHand[i].value;
+        console.log("in hitPlayer func " + player);
+      }
+    }
+    return player;
   }
   
   // DEALER HIT FUNCTION //
@@ -259,7 +258,6 @@ $(document).ready(function () {
 
       $('#message-text').empty();
       $('#message-text').append('<h6>' + messages.playerAction + '</h6>');
-
     }
   };
   
@@ -391,13 +389,10 @@ $(document).ready(function () {
       $('#message-text').empty();
       $('#message-text').append('<h6>' + messages.dealer21 + '</h6>');
       $('#nextHand').show();
-
-
     }
+
     console.log("PLAYER TOTAL: " + player);
-    console.log("PLAYER HAND = " + playerHand);
     console.log("DEALER TOTAL: " + dealer);
-    console.log("Dealer HAND = " + dealerHand);
 
     gameLogic();
     // ------> CALL GAME LOGIC FUNC HERE <-------- //
@@ -432,7 +427,18 @@ $(document).ready(function () {
     }
     console.log(dealer);
 
-    if (dealer > 17 && dealer >= 21) {
+    if (dealer > 21) {
+      $('#message-text').empty();
+      $('#message-text').append('<h6>' + messages.playerWin + '</h6>');
+
+      $('#cashCount').empty();
+      cashCount = parseInt(cashCount) + (parseInt(bet) + parseInt(bet));
+      $('#cashCount').append(cashCount);
+
+      $('#nextHand').show();
+    }
+
+    if (dealer >= 17 && dealer <= 21) {
       if (dealer > player) {
         $('#message-text').empty();
         $('#message-text').append('<h6>' + messages.playerLost + '</h6>');
@@ -441,13 +447,25 @@ $(document).ready(function () {
         $('#message-text').empty();
         $('#message-text').append('<h6>' + messages.playerWin + '</h6>');
         $('#nextHand').show();
+
+        $('#cashCount').empty();
+        cashCount = parseInt(cashCount) + (parseInt(bet) + parseInt(bet));
+        $('#cashCount').append(cashCount);
+
       } else if (dealer === player) {
         $('#message-text').empty();
         $('#message-text').append('<h6>' + messages.push + '</h6>');
         $('#nextHand').show();
 
+        $('#cashCount').empty();
+        cashCount = parseInt(cashCount) + parseInt(bet);
+        $('#cashCount').append(cashCount);
       }
+    }
 
+    if (dealer < 17) {
+      hitDealer();
+      gameLogic();
     }
   };
 
