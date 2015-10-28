@@ -167,6 +167,7 @@ $(document).ready(function () {
     playerHand.push(deck[0]);
     deck.splice(0, 1);
     player = player + playerHand[playerHand.length - 1].value;
+    // aceValue(playerHand, player);
   }
   
   // DEALER HIT FUNCTION //
@@ -175,6 +176,7 @@ $(document).ready(function () {
     dealerHand.push(deck[0]);
     dealer = dealer + dealerHand[dealerHand.length - 1].value;
     deck.splice(0, 1);
+    // aceValue(dealerHand, dealer);
   }
   
   // RESET HANDS BACK TO ZERO, RESET DECK , RESET BET //
@@ -213,6 +215,27 @@ $(document).ready(function () {
     $('#dealerCards').empty();
     $('#playerCards').empty();
   });
+  
+  // ACE VALUE 1 or 11 //
+  
+  // function countPlayerAce(arr) {
+  //   for (var i = 0; i < arr.length; i++) {
+  //     player = 0;
+  //     player = playerStartVal + arr[i].value;
+  //   }
+  // };
+
+  // function aceValue(arr, handValue /*(player or dealer)*/) {
+  //   console.log(player);
+  //   for (var i = 0; i < arr.length; i++) {
+  //     if ((arr[i].id === "A") && (handValue > 21)) {
+  //       console.log("There is an ACE in this hand.");
+  //       arr[i].value = 1;
+  //       countPlayerAce(arr);
+  //     }
+  //   }
+  //   return false;
+  // }
   
   // PLACE BET AND DEAL  //
   
@@ -280,9 +303,13 @@ $(document).ready(function () {
     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[0].imgTag + '</div><div class="card-text"><h2>' + playerHand[0].id + '</h2></div><div class="card-suit suit-right">' + playerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + playerHand[1].imgTag + '</div><div class="card-text"><h2>' + playerHand[1].id + '</h2></div><div class="card-suit suit-right">' + playerHand[1].bottomImg + '</div></div>');
 
     playerCount();
+    // aceValue(playerHand, playerStartVal);
     console.log("INITIAL PLAYER COUNT = " + player);
 
     if (player === 21) {
+      $('#stay-button').hide();
+      $('#hit').hide();
+      $('#nextHand').show();
       $('#message-text').empty();
       $('#message-text').append('<h6>' + messages.player21 + '</h6>');
       $('#cashCount').empty();
@@ -345,6 +372,7 @@ $(document).ready(function () {
 
     console.log("PLAYER COUNT AFTER HIT = " + player);
     console.log(playerHand);
+    // aceValue(playerHand, player);
 
     if (player > 21) {
       $('#message-text').empty();
@@ -366,6 +394,7 @@ $(document).ready(function () {
     $('#dealerCards').append('<div class="card"><div class="card-suit suit-left">' + dealerHand[0].imgTag + '</div><div class="card-text"><h2>' + dealerHand[0].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
     dealerCount();
     console.log("PLAYER TOTAL: " + player);
+    aceValue(dealerHand, dealer);
     console.log("DEALER TOTAL: " + dealer);
   });
   
