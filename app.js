@@ -224,15 +224,17 @@ $(document).ready(function () {
 
     bet = $('#bet').val();
 
-    if (parseInt(cashCount) === 0) {
-      validBet = false;
-      $('#message-text').empty();
-      $('#message-text').append('<h6>' + messages.betError4 + '</h6>');
-      $('#bet').hide();
-      $('#place-bet').hide();
-      $('#nextHand').hide();
-      return false;
-    };
+    // if (parseInt(cashCount) === 0) {
+    //   validBet = false;
+    //   $('#message-text').empty();
+    //   $('#message-text').append('<h6>' + messages.betError4 + '</h6>');
+    //   $('#bet').hide();
+    //   $('#place-bet').hide();
+    //   $('#nextHand').hide();
+    //   $('#dealerCards').empty();
+    //   $('#playerCards').empty();
+    //   return false;
+    // };
 
     if (parseInt(bet) > parseInt(cashCount)) {
       validBet = false;
@@ -295,6 +297,24 @@ $(document).ready(function () {
   });
   
   
+  // YOU'RE BROKE FUNCTION //
+  
+  function broke() {
+    if (parseInt(cashCount) === 0) {
+      validBet = false;
+      $('#message-text').empty();
+      $('#message-text').append('<h6>' + messages.betError4 + '</h6>');
+      $('#bet').hide();
+      $('#place-bet').hide();
+      $('#nextHand').hide();
+      $('#dealerCards').empty();
+      $('#playerCards').empty();
+      return false;
+    }
+    return true;
+  };
+  
+  
   
   
   
@@ -307,11 +327,16 @@ $(document).ready(function () {
     dealer = 0;
     deck = freshDeck();
     shuffle(deck);
-    // bet = 0;
+    bet = 0;
   };
 
   $('#nextHand').on('click', function () {
     nextHand(freshDeck);
+    console.log('bet = ' + bet);
+    broke();
+    if(broke() === false){
+      return false;
+    }
 
     $('#dealerCards').empty();
     $('#playerCards').empty();
@@ -321,6 +346,8 @@ $(document).ready(function () {
 
     $('#bet').show();
     $('#place-bet').show();
+    
+    
 
 
   });
@@ -344,10 +371,6 @@ $(document).ready(function () {
       $('#stay-button').hide();
 
       $('#nextHand').show();
-
-
-
-
     };
   });
   
