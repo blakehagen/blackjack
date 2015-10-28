@@ -167,18 +167,17 @@ $(document).ready(function () {
     playerHand.push(deck[0]);
     deck.splice(0, 1);
     player = player + playerHand[playerHand.length - 1].value;
-
-    for (var i = 0; i < playerHand.length; i++) {
-      if (playerHand[i].id === "A" && player > 21) {
-        console.log("YOU HAVE AN ACE!");
-        playerHand[i].value = 1;
-        player = 0;
-        player = player + playerHand[i].value;
-        console.log("in hitPlayer func " + player);
+    var aceCountPlayer = 0;
+    if (player > 21) {
+      for (var i = 0; i < playerHand.length; i++) {
+        if (playerHand[i].id === "A") {
+          aceCountPlayer++;
+        }
       }
     }
+    player = player - (10 * aceCountPlayer);
     return player;
-  }
+  };
   
   // DEALER HIT FUNCTION //
   
@@ -186,9 +185,18 @@ $(document).ready(function () {
     dealerHand.push(deck[0]);
     dealer = dealer + dealerHand[dealerHand.length - 1].value;
     deck.splice(0, 1);
+    var aceCountDealer = 0
+    if (dealer > 21) {
+      for (var i = 0; i < dealerHand.length; i++) {
+        if (dealerHand[i].id === "A") {
+          aceCountDealer++;
+        }
+      }
+    }
+    dealer = dealer - (10 * aceCountDealer);
 
     $('#dealerCards').append('<div class="card"><div class="card-suit suit-left">' + dealerHand[dealerHand.length - 1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[dealerHand.length - 1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[dealerHand.length - 1].bottomImg + '</div></div>');
-  }
+  };
   
   // RESET HANDS BACK TO ZERO, RESET DECK , RESET BET //
   var cashCount = 500;
@@ -359,8 +367,8 @@ $(document).ready(function () {
     hitPlayer();
     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[playerHand.length - 1].imgTag + '</div><div class="card-text"><h2>' + playerHand[playerHand.length - 1].id + '</h2></div><div class="card-suit suit-right">' + playerHand[playerHand.length - 1].bottomImg + '</div></div>');
 
-    console.log("PLAYER COUNT AFTER HIT = " + player);
     console.log(playerHand);
+    console.log("PLAYER COUNT AFTER HIT = " + player);
 
     if (player > 21) {
       $('#message-text').empty();
@@ -392,12 +400,10 @@ $(document).ready(function () {
     }
 
     console.log("PLAYER TOTAL: " + player);
-    console.log("DEALER TOTAL: " + dealer);
+    console.log("DEALER TOTAL(initial): " + dealer);
 
     gameLogic();
-    // ------> CALL GAME LOGIC FUNC HERE <-------- //
-    
-    
+
   });
   
   // MESSAGE CENTER //
@@ -425,7 +431,7 @@ $(document).ready(function () {
     if (dealer < 17) {
       hitDealer();
     }
-    console.log(dealer);
+    console.log("dealer: " + dealer);
 
     if (dealer > 21) {
       $('#message-text').empty();
