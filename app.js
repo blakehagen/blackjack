@@ -10,12 +10,12 @@ $(document).ready(function () {
         
   // Card Constructor //
   
-  var Card = function (card, suit, id, value, altValue) {
+  var Card = function (card, suit, id, value) {
     this.card = card;
     this.suit = suit;
     this.id = id;
     this.value = value;
-    this.altValue = altValue;
+    // this.altValue = altValue;
     this.whoAmI = function () {
       console.log("I'm a " + this.card + " of " + this.suit + ".");
     };
@@ -31,6 +31,14 @@ $(document).ready(function () {
     } else if (suit === "diamonds") {
       this.imgTag = '<img src="assets/diamond.png">';
       this.bottomImg = '<img src="assets/diamond-inverted.png">';
+    }
+
+    if (id === "A") {
+      this.aceMethod = function () {
+        if (player > 21) {
+          this.value = 1;
+        }
+      }
     }
   };
   
@@ -100,10 +108,10 @@ $(document).ready(function () {
     var kingClubs = new Card("king", "clubs", "K", 10);
     var kingDiamonds = new Card("king", "diamonds", "K", 10);
 
-    var aceHearts = new Card("ace", "hearts", "A", 11, 1);
-    var aceSpades = new Card("ace", "spades", "A", 11, 1);
-    var aceClubs = new Card("ace", "clubs", "A", 11, 1);
-    var aceDiamonds = new Card("ace", "diamonds", "A", 11, 1);
+    var aceHearts = new Card("ace", "hearts", "A", 11);
+    var aceSpades = new Card("ace", "spades", "A", 11);
+    var aceClubs = new Card("ace", "clubs", "A", 11);
+    var aceDiamonds = new Card("ace", "diamonds", "A", 11);
     
     // Push Cards into 'deck' array //
     deck.push(twoHearts, twoSpades, twoClubs, twoDiamonds, threeHearts, threeSpades, threeClubs, threeDiamonds, fourHearts, fourSpades, fourClubs, fourDiamonds, fiveHearts, fiveSpades, fiveClubs, fiveDiamonds, sixHearts, sixSpades, sixClubs, sixDiamonds, sevenHearts, sevenSpades, sevenClubs, sevenDiamonds, eightHearts, eightSpades, eightClubs, eightDiamonds, nineHearts, nineSpades, nineClubs, nineDiamonds, tenHearts, tenSpades, tenClubs, tenDiamonds, jackHearts, jackSpades, jackClubs, jackDiamonds, queenHearts, queenSpades, queenClubs, queenDiamonds, kingHearts, kingSpades, kingClubs, kingDiamonds, aceHearts, aceSpades, aceClubs, aceDiamonds);
@@ -167,7 +175,10 @@ $(document).ready(function () {
     playerHand.push(deck[0]);
     deck.splice(0, 1);
     player = player + playerHand[playerHand.length - 1].value;
-    // aceValue(playerHand, player);
+    
+    
+    
+    
   }
   
   // DEALER HIT FUNCTION //
@@ -176,7 +187,8 @@ $(document).ready(function () {
     dealerHand.push(deck[0]);
     dealer = dealer + dealerHand[dealerHand.length - 1].value;
     deck.splice(0, 1);
-    // aceValue(dealerHand, dealer);
+
+    $('#dealerCards').append('<div class="card"><div class="card-suit suit-left">' + dealerHand[dealerHand.length - 1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[dealerHand.length - 1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[dealerHand.length - 1].bottomImg + '</div></div>');
   }
   
   // RESET HANDS BACK TO ZERO, RESET DECK , RESET BET //
@@ -215,27 +227,6 @@ $(document).ready(function () {
     $('#dealerCards').empty();
     $('#playerCards').empty();
   });
-  
-  // ACE VALUE 1 or 11 //
-  
-  // function countPlayerAce(arr) {
-  //   for (var i = 0; i < arr.length; i++) {
-  //     player = 0;
-  //     player = playerStartVal + arr[i].value;
-  //   }
-  // };
-
-  // function aceValue(arr, handValue /*(player or dealer)*/) {
-  //   console.log(player);
-  //   for (var i = 0; i < arr.length; i++) {
-  //     if ((arr[i].id === "A") && (handValue > 21)) {
-  //       console.log("There is an ACE in this hand.");
-  //       arr[i].value = 1;
-  //       countPlayerAce(arr);
-  //     }
-  //   }
-  //   return false;
-  // }
   
   // PLACE BET AND DEAL  //
   
@@ -303,7 +294,6 @@ $(document).ready(function () {
     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[0].imgTag + '</div><div class="card-text"><h2>' + playerHand[0].id + '</h2></div><div class="card-suit suit-right">' + playerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + playerHand[1].imgTag + '</div><div class="card-text"><h2>' + playerHand[1].id + '</h2></div><div class="card-suit suit-right">' + playerHand[1].bottomImg + '</div></div>');
 
     playerCount();
-    // aceValue(playerHand, playerStartVal);
     console.log("INITIAL PLAYER COUNT = " + player);
 
     if (player === 21) {
@@ -362,6 +352,7 @@ $(document).ready(function () {
 
     $('#bet').show();
     $('#place-bet').show();
+    $('#nextHand').hide();
   });
   
   // HIT PLAYER ACTION //
@@ -372,7 +363,6 @@ $(document).ready(function () {
 
     console.log("PLAYER COUNT AFTER HIT = " + player);
     console.log(playerHand);
-    // aceValue(playerHand, player);
 
     if (player > 21) {
       $('#message-text').empty();
@@ -392,10 +382,27 @@ $(document).ready(function () {
     // show dealer's hidden card //
     $('#dealerCards').empty();
     $('#dealerCards').append('<div class="card"><div class="card-suit suit-left">' + dealerHand[0].imgTag + '</div><div class="card-text"><h2>' + dealerHand[0].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
+
+    $('#hit').hide();
+    $('#stay-button').hide();
+
     dealerCount();
+    if (dealer === 21) {
+      $('#message-text').empty();
+      $('#message-text').append('<h6>' + messages.dealer21 + '</h6>');
+      $('#nextHand').show();
+
+
+    }
     console.log("PLAYER TOTAL: " + player);
-    aceValue(dealerHand, dealer);
+    console.log("PLAYER HAND = " + playerHand);
     console.log("DEALER TOTAL: " + dealer);
+    console.log("Dealer HAND = " + dealerHand);
+
+    gameLogic();
+    // ------> CALL GAME LOGIC FUNC HERE <-------- //
+    
+    
   });
   
   // MESSAGE CENTER //
@@ -412,15 +419,37 @@ $(document).ready(function () {
     dealerBust: 'Dealer busted! YOU WIN!',
     push: 'Push',
     player21: 'Blackjack! YOU WIN!',
-    dealer21: 'Dealer Blackjack. You lost!'
+    dealer21: 'Dealer Blackjack. You lost!',
+    playerLost: 'You lost!',
+    playerWin: 'You Won!!'
   };
   
-  // // // GAME LOGIC // // //
+  // GAME LOGIC //
   
-  // function gameLogic() {
-  //   if()
+  function gameLogic() {
+    if (dealer < 17) {
+      hitDealer();
+    }
+    console.log(dealer);
 
-  // }
+    if (dealer > 17 && dealer >= 21) {
+      if (dealer > player) {
+        $('#message-text').empty();
+        $('#message-text').append('<h6>' + messages.playerLost + '</h6>');
+        $('#nextHand').show();
+      } else if (player > dealer) {
+        $('#message-text').empty();
+        $('#message-text').append('<h6>' + messages.playerWin + '</h6>');
+        $('#nextHand').show();
+      } else if (dealer === player) {
+        $('#message-text').empty();
+        $('#message-text').append('<h6>' + messages.push + '</h6>');
+        $('#nextHand').show();
+
+      }
+
+    }
+  };
 
 
 
