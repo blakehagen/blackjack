@@ -18,24 +18,50 @@
                 <h1>blackJack 1.0</h1>
             </div>
             <div class="item right">
-                <h6><a href="http://blakehagen.github.io" target="_blank">A Blake Hagen Production</a></h6>
+                <div class="sub-title top-margin align-right">
+                    <h6><a href="http://blakehagen.github.io" target="_blank">A Blake Hagen Production</a></h6>
+                </div>
+
+                <div class="sub-title align-right">
+                    <div class="social">
+                        <h6><a href="http://linkedin.com/in/blakehagen" target="_blank"><i class="fa fa-linkedin"></i></a></h6>
+                    </div>
+                    <div class="social">
+                        <h6><a href="http://twitter.com/blakehagen" target="_blank"><i class="fa fa-twitter"></i></a></h6>
+                    </div>
+                </div>
             </div>
         </header>
         <!-- TOP SECTION -->
         <div class="top-content">
-            <div class="button new active" id="startNewGame">
-                <h4>New Game</h4>
+            <div class="button-container align-left">
+                <div class="button new active" id="startNewGame">
+                    <h4>New Game</h4>
+                </div>
+
+                <div class="button next-hand active" id="nextHand">
+                    <h4>Next Hand</h4>
+                </div>
             </div>
-            <div class="button next-hand active" id="nextHand">
-                <h4>Next Hand</h4>
-            </div>
-            <div class="button cash right">
-                <h4><i class="fa fa-usd"></i> Cash:&nbsp;&nbsp; <span id="cashCount"></span></h4>
-            </div>
-            <div class="button hands-played right">
-                <h4>Hands Played: &nbsp;&nbsp; <span id="handsPlayed"></span></h4>
+
+            <div class="button-container right align-right">
+                <div class="button active" id="">
+                    <h4>Hands Played: &nbsp;&nbsp; <span id="handsPlayed"></span></h4>
+                </div>
+
+                <div class="button next-hand active" id="nextHand">
+                    <h4><i class="fa fa-usd"></i> Cash &nbsp;&nbsp; <span id="cashCount"></span></h4>
+                </div>
             </div>
         </div>
+        <!--<div class="button cash right">-->
+
+        <!--<h4><i class="fa fa-usd"></i> Cash:&nbsp;&nbsp; <span id="cashCount"></span></h4>
+                </div>-->
+        <!--<div class="button hands-played right">
+                    <h4>Hands Played: &nbsp;&nbsp; <span id="handsPlayed"></span></h4>
+                </div>-->
+        <!--</div>-->
         <!-- DEALER CARDS SECTION -->
         <div class="container">
             <div class="card-container" id="dealerCards">

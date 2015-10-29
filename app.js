@@ -2,7 +2,7 @@ $(document).ready(function () {
   
     // HIDE NON_ESSENTIAL BUTTONS ON LOAD //
 
-    $('#nextHand').hide();
+    $('#nextHand').show();
     $('#stay-button').hide();
     $('#hit').hide();
     $('#bet').hide();
@@ -294,7 +294,7 @@ $(document).ready(function () {
             $('#message-text').empty();
             $('#message-text').append('<h6>' + messages.player21 + '</h6>');
             $('#cashCount').empty();
-            cashCount = parseInt(cashCount) + ((parseInt(bet) * 1.5));
+            cashCount = parseInt(cashCount) + ((parseInt(bet) * 1.5) + parseInt(bet));
             $('#cashCount').append(cashCount);
         }
     });
