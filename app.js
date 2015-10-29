@@ -2,7 +2,7 @@ $(document).ready(function () {
   
   // HIDE NON_ESSENTIAL BUTTONS ON LOAD //
 
-  $('#nextHand').show();
+  $('#nextHand').hide();
   $('#stay-button').hide();
   $('#hit').hide();
   $('#bet').hide();
@@ -107,10 +107,8 @@ $(document).ready(function () {
     
     // Push Cards into 'deck' array //
     deck.push(twoHearts, twoSpades, twoClubs, twoDiamonds, threeHearts, threeSpades, threeClubs, threeDiamonds, fourHearts, fourSpades, fourClubs, fourDiamonds, fiveHearts, fiveSpades, fiveClubs, fiveDiamonds, sixHearts, sixSpades, sixClubs, sixDiamonds, sevenHearts, sevenSpades, sevenClubs, sevenDiamonds, eightHearts, eightSpades, eightClubs, eightDiamonds, nineHearts, nineSpades, nineClubs, nineDiamonds, tenHearts, tenSpades, tenClubs, tenDiamonds, jackHearts, jackSpades, jackClubs, jackDiamonds, queenHearts, queenSpades, queenClubs, queenDiamonds, kingHearts, kingSpades, kingClubs, kingDiamonds, aceHearts, aceSpades, aceClubs, aceDiamonds);
-
     return deck;
   };
-  
   
   // FUNCTION TO SHUFFLE THE DECK ("Fisher-Yates" Algorithm) // 
   
@@ -129,8 +127,7 @@ $(document).ready(function () {
   }
   
   // SHUFFLE THE DECK //
-  
-  // shuffle(deck);  --> Now you have a shuffled deck! //
+    // shuffle(deck);  --> Now you have a shuffled deck! //
   
   //  DEAL //
   
@@ -138,7 +135,7 @@ $(document).ready(function () {
   var player = 0;
   var dealerHand = [];
   var dealer = 0;
-
+  
   function deal(arr) {
     playerHand.push(arr[0], arr[2]);
     dealerHand.push(arr[1], arr[3]);
@@ -177,9 +174,7 @@ $(document).ready(function () {
           playerHand[i].value = 1
         }
       }
-      // player = player - (10 * aceCountPlayer);
     }
-
     return player;
   };
   
@@ -192,17 +187,14 @@ $(document).ready(function () {
     var aceCountDealer = 0
     if (dealer > 21) {
       for (var i = 0; i < dealerHand.length; i++) {
-        if (dealerHand[i].id === "A") {
+        if (dealerHand[i].id === "A" && dealerHand[i].value !== 1) {
           aceCountDealer++;
           dealer = dealer - 10;
           console.log(dealer);
           dealerHand[i].value = 1
         }
       }
-      // dealer = dealer - (10 * aceCountDealer);
     }
-
-
     $('#dealerCards').append('<div class="card"><div class="card-suit suit-left">' + dealerHand[dealerHand.length - 1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[dealerHand.length - 1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[dealerHand.length - 1].bottomImg + '</div></div>');
   };
   
@@ -226,19 +218,14 @@ $(document).ready(function () {
   
   $('#startNewGame').on('click', function () {
     startNewGame(freshDeck);
-
     $('#message-text').empty();
     $('#message-text').append('<h6>' + messages.placeBet + '</h6>');
-
     $('#bet').show();
     $('#place-bet').show();
-
     $('#cashCount').empty();
     $('#cashCount').append(cashCount);
-
     $('#handsPlayed').empty();
     $('#handsPlayed').append(handsPlayed);
-
     $('#dealerCards').empty();
     $('#playerCards').empty();
   });
@@ -249,9 +236,7 @@ $(document).ready(function () {
   var validBet = false;
 
   function placeBet() {
-
     bet = $('#bet').val();
-
     if (parseInt(bet) > parseInt(cashCount)) {
       validBet = false;
       $('#bet').val('');
@@ -269,9 +254,7 @@ $(document).ready(function () {
     } else {
       cashCount = cashCount - bet;
       validBet = true;
-
       deal(deck);
-
       $('#message-text').empty();
       $('#message-text').append('<h6>' + messages.playerAction + '</h6>');
     }
@@ -280,22 +263,17 @@ $(document).ready(function () {
   // PLACE BET FUNCTION INVOKE ON CLICK //
 
   $('#place-bet').on('click', function () {
-
     placeBet();
-
     if (validBet !== true) {
       return false;
     }
-
     $('#cashCount').text(cashCount);
     $('#bet').val('');
-
     handsPlayed = handsPlayed + 1;
     $('#handsPlayed').empty();
     $('#handsPlayed').append(parseInt(handsPlayed));
     
     // Show Hit & Stand Buttons ---- Hide Bet Buttons //
-    
     $('#stay-button').show();
     $('#hit').show();
     $('#bet').hide();
@@ -304,9 +282,8 @@ $(document).ready(function () {
     
     // DEAL CARDS ONCE BET IS SUBMITTED //
     $('#dealerCards').append('<div class="card hidden"></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
-
+    
     $('#playerCards').append('<div class="card"><div class="card-suit suit-left">' + playerHand[0].imgTag + '</div><div class="card-text"><h2>' + playerHand[0].id + '</h2></div><div class="card-suit suit-right">' + playerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + playerHand[1].imgTag + '</div><div class="card-text"><h2>' + playerHand[1].id + '</h2></div><div class="card-suit suit-right">' + playerHand[1].bottomImg + '</div></div>');
-
     playerCount();
     console.log("INITIAL PLAYER COUNT = " + player);
 
@@ -357,13 +334,10 @@ $(document).ready(function () {
     if (broke() === false) {
       return false;
     }
-
     $('#dealerCards').empty();
     $('#playerCards').empty();
-
     $('#message-text').empty();
     $('#message-text').append('<h6>' + messages.placeBet + '</h6>');
-
     $('#bet').show();
     $('#place-bet').show();
     $('#nextHand').hide();
@@ -381,10 +355,8 @@ $(document).ready(function () {
     if (player > 21) {
       $('#message-text').empty();
       $('#message-text').append('<h6>' + messages.playerBust + '</h6>');
-
       $('#hit').hide();
       $('#stay-button').hide();
-
       $('#nextHand').show();
     };
   });
@@ -392,7 +364,6 @@ $(document).ready(function () {
   // PLAYER STAY  -- locks in player value and triggers dealers hand //
   
   $('#stay-button').on('click', function () {
-    
     // show dealer's hidden card //
     $('#dealerCards').empty();
     $('#dealerCards').append('<div class="card"><div class="card-suit suit-left">' + dealerHand[0].imgTag + '</div><div class="card-text"><h2>' + dealerHand[0].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[0].bottomImg + '</div></div><div class="card"><div class="card-suit suit-left">' + dealerHand[1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[1].bottomImg + '</div></div>');
@@ -405,14 +376,13 @@ $(document).ready(function () {
       $('#message-text').empty();
       $('#message-text').append('<h6>' + messages.dealer21 + '</h6>');
       $('#nextHand').show();
+      return false;
     }
 
     console.log("PLAYER TOTAL: " + player);
     console.log("DEALER TOTAL(initial): " + dealer);
-    return false;
 
     gameLogic();
-
   });
   
   // MESSAGE CENTER //
@@ -452,7 +422,6 @@ $(document).ready(function () {
 
       $('#nextHand').show();
     }
-
     if (dealer >= 17 && dealer <= 21) {
       if (dealer > player) {
         $('#message-text').empty();
@@ -462,22 +431,18 @@ $(document).ready(function () {
         $('#message-text').empty();
         $('#message-text').append('<h6>' + messages.playerWin + '</h6>');
         $('#nextHand').show();
-
         $('#cashCount').empty();
         cashCount = parseInt(cashCount) + (parseInt(bet) + parseInt(bet));
         $('#cashCount').append(cashCount);
-
       } else if (dealer === player) {
         $('#message-text').empty();
         $('#message-text').append('<h6>' + messages.push + '</h6>');
         $('#nextHand').show();
-
         $('#cashCount').empty();
         cashCount = parseInt(cashCount) + parseInt(bet);
         $('#cashCount').append(cashCount);
       }
     }
-
     if (dealer < 17) {
       hitDealer();
       gameLogic();
@@ -485,14 +450,5 @@ $(document).ready(function () {
   };
 
 
-
-
-
-
-
-
-
-
-
-})
+});
 
