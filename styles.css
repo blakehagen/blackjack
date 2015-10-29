@@ -78,6 +78,7 @@ header {
 .next-hand {
 	display: inline-block;
 	margin: 0 0 0 15px;
+	/*border: 1px solid red;*/
 }
 
 .button h4 {

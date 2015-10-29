@@ -2,7 +2,7 @@ $(document).ready(function () {
   
   // HIDE NON_ESSENTIAL BUTTONS ON LOAD //
 
-  $('#nextHand').hide();
+  $('#nextHand').show();
   $('#stay-button').hide();
   $('#hit').hide();
   $('#bet').hide();
@@ -170,12 +170,16 @@ $(document).ready(function () {
     var aceCountPlayer = 0;
     if (player > 21) {
       for (var i = 0; i < playerHand.length; i++) {
-        if (playerHand[i].id === "A") {
+        if (playerHand[i].id === "A" && playerHand[i].value !== 1) {
           aceCountPlayer++;
+          player = player - 10;
+          console.log(player);
+          playerHand[i].value = 1
         }
       }
+      // player = player - (10 * aceCountPlayer);
     }
-    player = player - (10 * aceCountPlayer);
+
     return player;
   };
   
@@ -190,10 +194,14 @@ $(document).ready(function () {
       for (var i = 0; i < dealerHand.length; i++) {
         if (dealerHand[i].id === "A") {
           aceCountDealer++;
+          dealer = dealer - 10;
+          console.log(dealer);
+          dealerHand[i].value = 1
         }
       }
+      // dealer = dealer - (10 * aceCountDealer);
     }
-    dealer = dealer - (10 * aceCountDealer);
+
 
     $('#dealerCards').append('<div class="card"><div class="card-suit suit-left">' + dealerHand[dealerHand.length - 1].imgTag + '</div><div class="card-text"><h2>' + dealerHand[dealerHand.length - 1].id + '</h2></div><div class="card-suit suit-right">' + dealerHand[dealerHand.length - 1].bottomImg + '</div></div>');
   };
@@ -401,6 +409,7 @@ $(document).ready(function () {
 
     console.log("PLAYER TOTAL: " + player);
     console.log("DEALER TOTAL(initial): " + dealer);
+    return false;
 
     gameLogic();
 
