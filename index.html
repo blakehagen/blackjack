@@ -2,105 +2,105 @@
 <html lang="en">
 
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
-	<meta charset="UTF-8">
-	<title>blackJack 1.0</title>
-	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title>blackJack 1.0</title>
+    <link rel="stylesheet" href="styles.css">
 
-	<link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 
 <body>
-	<div class="page-wrap">
-		<header>
-			<div class="item">
-				<h1>blackJack 1.0</h1>
-			</div>
-			<div class="item right">
-				<h6><a href="http://blakehagen.github.io" target="_blank">A Blake Hagen Production</a></h6>
-			</div>
-		</header>
-		<!-- TOP SECTION -->
-		<div class="top-content">
-			<div class="button new active" id="startNewGame">
-				<h4>New Game</h4>
-			</div>
-			<div class="button next-hand active" id="nextHand">
-				<h4>Next Hand</h4>
-			</div>
-			<div class="button cash right">
-				<h4><i class="fa fa-usd"></i> Cash:&nbsp;&nbsp; <span id="cashCount"></span></h4>
-			</div>
-			<div class="button hands-played right">
-				<h4>Hands Played: &nbsp;&nbsp; <span id="handsPlayed"></span></h4>
-			</div>
-		</div>
-		<!-- DEALER CARDS SECTION -->
-		<div class="container">
-			<div class="card-container" id="dealerCards">
-			</div>
-		</div>
-		<!-- RULES  SECTION -->
-		<div class="container mid">
-			<div class="house-rules-container">
-				<div class="card hidden" id="cardMiddle">
-				</div>
-				<div class="rules-box">
-					<h4>House Rules
+    <div class="page-wrap">
+        <header>
+            <div class="item">
+                <h1>blackJack 1.0</h1>
+            </div>
+            <div class="item right">
+                <h6><a href="http://blakehagen.github.io" target="_blank">A Blake Hagen Production</a></h6>
+            </div>
+        </header>
+        <!-- TOP SECTION -->
+        <div class="top-content">
+            <div class="button new active" id="startNewGame">
+                <h4>New Game</h4>
+            </div>
+            <div class="button next-hand active" id="nextHand">
+                <h4>Next Hand</h4>
+            </div>
+            <div class="button cash right">
+                <h4><i class="fa fa-usd"></i> Cash:&nbsp;&nbsp; <span id="cashCount"></span></h4>
+            </div>
+            <div class="button hands-played right">
+                <h4>Hands Played: &nbsp;&nbsp; <span id="handsPlayed"></span></h4>
+            </div>
+        </div>
+        <!-- DEALER CARDS SECTION -->
+        <div class="container">
+            <div class="card-container" id="dealerCards">
+            </div>
+        </div>
+        <!-- RULES  SECTION -->
+        <div class="container mid">
+            <div class="house-rules-container">
+                <div class="card hidden" id="cardMiddle">
+                </div>
+                <div class="rules-box">
+                    <h4>House Rules
 						<p>Dealer must hit on 16</p>
 						<p>Dealer stands on all 17's</p>
 						<p>No Split & No Double Down</p>
 					</h4>
-				</div>
-				<div class="rules-box">
-					<h4>House Rules
+                </div>
+                <div class="rules-box">
+                    <h4>House Rules
 						<p>Blackjack pays&nbsp;&nbsp; 3 &nbsp; : &nbsp; 2</p>
 						<p>Max Bet &nbsp; = &nbsp; No Limit</p>
 						<p>Have Fun!</p>
 					</h4>
-				</div>
-			</div>
-		</div>
-		<!-- MESSAGE CENTER -->
-		<div class="message-container">
-			<div class="message-center" id="message-text">
-				<h6>Click "New Game" to play blackJack 1.0</h6>
-			</div>
-		</div>
-		<!-- PLAYER CARDS/ACTION SECTION -->
-		<div class="container">
-			<div class="card-container" id="playerCards">
-			</div>
-		</div>
-		<div class="playerAction">
-			<div class="playerButton hit active" id="hit">
-				<h6>Hit</h6>
-			</div>
-			<div class="playerButton stay active" id="stay-button">
-				<h6>Stay</h6>
-			</div>
-		</div>
-		<div class="playerAction wager">
-			<input class="playerButton betButton" placeholder="Enter bet" id="bet">
-			</input>
-			<div class="playerButton bet active" id="place-bet">
-				<h6>Submit</h6>
-			</div>
-							<!--ADD EASY BET BUTTONS-->
-			<!--<div class="playerButton bet active" id="place-bet">
+                </div>
+            </div>
+        </div>
+        <!-- MESSAGE CENTER -->
+        <div class="message-container">
+            <div class="message-center" id="message-text">
+                <h6>Click "New Game" to play blackJack 1.0</h6>
+            </div>
+        </div>
+        <!-- PLAYER CARDS/ACTION SECTION -->
+        <div class="container">
+            <div class="card-container" id="playerCards">
+            </div>
+        </div>
+        <div class="playerAction">
+            <div class="playerButton hit active" id="hit">
+                <h6>Hit</h6>
+            </div>
+            <div class="playerButton stay active" id="stay-button">
+                <h6>Stay</h6>
+            </div>
+        </div>
+        <div class="playerAction wager">
+            <input class="playerButton betButton" placeholder="Enter bet" id="bet">
+            </input>
+            <div class="playerButton bet active" id="place-bet">
+                <h6>Submit</h6>
+            </div>
+            <!--ADD EASY BET BUTTONS-->
+            <!--<div class="playerButton bet active" id="place-bet">
 				<h6>Bet $50</h6>
 			</div>
 			<div class="playerButton bet active" id="place-bet">
 				<h6>All In</h6>
 			</div>-->
-		</div>
-	</div>
-	<div class="footer">
-		<h6>blackJack 1.0 is not a gambling site. For entertainment purposes only.</h6>
-	</div>
-	<script src="jquery-1.11.3.min.js" type="text/javascript"></script>
-	<script src="app.js"></script>
+        </div>
+    </div>
+    <div class="footer">
+        <h6>blackJack 1.0 is not a gambling site. For entertainment purposes only.</h6>
+    </div>
+    <script src="jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
