@@ -134,6 +134,10 @@ header {
     margin-right: 15px;
 }
 
+.hands-button {
+    width: 230px;
+}
+
 /* END TOP CONTENT */
 
 /* CARD CONTAINER and CARDS */
@@ -372,6 +376,10 @@ input {
 		font-size: 15px;
 		line-height: 28px;
 	}
+    
+    .hands-button {
+        width: 170px;
+    }
 	
 	.mid {
 		height: 100px;
