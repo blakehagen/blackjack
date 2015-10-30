@@ -2,7 +2,7 @@ $(document).ready(function () {
   
     // HIDE NON_ESSENTIAL BUTTONS ON LOAD //
 
-    $('#nextHand').show();
+    $('#nextHand').hide();
     $('#stay-button').hide();
     $('#hit').hide();
     $('#bet').hide();

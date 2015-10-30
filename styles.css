@@ -157,13 +157,11 @@ header {
 .card-text {
 	width: 100%;
 	margin: 10px auto;
-	/*border: 1px solid purple;*/
 }
 
 .card-suit {
 	width: 100%;
 	margin: 0px auto;
-	/*border: 1px solid purple;	*/
 }
 
 	.card-suit.suit-right {
@@ -177,7 +175,6 @@ header {
 .card-text h2 {
 	font-size: 35px;
 	line-height: 30px;
-	/*border: 1px solid blueviolet;*/
 }
 
 img {
@@ -244,7 +241,7 @@ h4 p {
 	margin: 0 auto;
 	height: 34px;
 	width: 670px;
-	border: 1px solid #bbb;
+	border: 1px solid lightslategray;
 	border-radius: 10px;
 	text-align: center;
 }
@@ -265,7 +262,6 @@ h4 p {
 	width: 100%;
 	height: 30px;
 	text-align: center;
-	/*border: 1px solid red;*/
 }
 
 .playerButton {
@@ -520,11 +516,12 @@ input {
     }  
     
     .margin-right-headers {
-        margin-top: 10px; 
+        margin-top: 15px; 
     }
     
     .margin-left-headers {
         margin: 0; 
+        text-align: left;
     }
     
     .button {
@@ -532,6 +529,11 @@ input {
 		height: 30px;
         margin-left: 30px;
 	}
+    
+    .new {
+        margin-right: 15px;
+        text-align: left;
+    }
 }
 
 @media (max-width: 430px){
