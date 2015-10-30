@@ -36,13 +36,13 @@ h1,h2,h3,h4,h5,h6 {
  /* HEADER */
 
 header {
-	border: 1px solid lightseagreen;
+	/*border: 1px solid lightseagreen;*/
 	width: 100%;
 	height: 120px;
 }
 
 	header .item {
-		border: 1px solid palevioletred;
+		/*border: 1px solid palevioletred;*/
         height: 100%;
 		width: 40%;
 		display: inline-block;
@@ -58,7 +58,7 @@ header {
     
 .sub-title {
     width: 100%;
-    border: 1px solid tan;
+    /*border: 1px solid tan;*/
 }
 
 .align-right {
@@ -70,12 +70,11 @@ header {
 }
 
 .top-margin {
-    margin-top: 38px;
+    margin-top: 50px;
 }
 
 .social {
-    border: 1px solid red;
-    margin: 5px 0 0 10px;
+    margin: 5px 0 0 15px;
     display: inline-block;
 }
 
@@ -95,19 +94,21 @@ header {
 
 .top-content {
 	width: 100%;
-	border: 1px solid green;
+    height: 40px;
+	/*border: 1px solid dodgerblue;*/
 	margin-bottom: 30px;
 }
 
 .button-container {
-    /*border: 1px solid darkmagenta;*/
-    height: 100%;
+    /*border: 1px solid darkred;*/
+    height: 40px;
     display: inline-block;
 }
 
 .button {
 	width: 160px;
 	height: 40px;
+    margin-right: 20px;
 	border: 1px solid #333;
 	border-radius: 50px;
     display: inline-block;
@@ -118,21 +119,19 @@ header {
 	cursor: pointer;
 }
 
-.next-hand {
-	display: inline-block;
-	margin: 0 0 0 15px;
-	/*border: 1px solid red;*/
-}
-
 .button h4 {
-	font-size: 16px;
+	font-size: 18px;
 	margin: 0;
-	line-height: 40px;
+	line-height: 37px;
 	text-align: center;
 }
 
 .no-border {
     border: none;
+}
+
+.new {
+    margin-right: 15px;
 }
 
 /* END TOP CONTENT */
@@ -235,23 +234,23 @@ h4 p {
 
 /* MESSAGE CENTER */
 .message-container {
-	margin-top: 15px;
+	margin: 15px 0;
 	width: 100%;
-	height: 30px;
+	height: 34px;
 	/*border: 1px solid mediumvioletred;*/
 }
 
 .message-center {
 	margin: 0 auto;
-	height: 30px;
-	width: 680px;
+	height: 34px;
+	width: 670px;
 	border: 1px solid #bbb;
 	border-radius: 10px;
 	text-align: center;
 }
 	
 	.message-center h6 {
-		font-size: 15px;
+		font-size: 18px;
 		margin: 5px 0 0 0;
 		color: #333;
 		font-weight: 100;
@@ -293,11 +292,9 @@ input {
 }
 
 .betButton {
-
 	font-family: 'Play', sans-serif;
 	font-size: 14px;
 	display: inline-block
-	
 }
 
 .submit {
@@ -329,7 +326,7 @@ input {
 }
 	
 .footer h6 {
-	font-size: 12px;
+	font-size: 10px;
 	color: lightslategray;
 	line-height: 40px;
 	font-weight: 100;
@@ -356,21 +353,28 @@ input {
     }
 }
 
-@media (max-width: 760px){
+@media (max-width: 792px){
+    
+    .top-content {
+        height: 30px;
+    }
+
+    .button-container {
+        height: 30px;
+    }
     
     .item h1 {
         font-size: 38px;
-        line-height: 50px;
     }
     
 	.button {
-		width: 130px;
+		width: 120px;
 		height: 30px;
 	}
 
 	.button h4 {
-		font-size: 14px;
-		line-height: 29px;
+		font-size: 15px;
+		line-height: 28px;
 	}
 	
 	.mid {
@@ -410,95 +414,49 @@ input {
 
 @media (max-width: 670px){
     
-    /*   TESTING TEST TEST */
-    
-        header {
-        border: 1px solid orange;
+    header {
         width: 100%;
-        /*height: 120px;*/
+        height: 120px;
+        margin-bottom: 16px;
     }
 
 	header .item {
-		border: 1px solid palevioletred;
-        height: 55px;
-		width: 70%;
-		/*display: block;*/
+        height: 60px;
+		width: 80%;
         margin: 0;
-        /*float: none;*/
+        margin-left: 30px;
+        float: none;
 	}
     
     .item h1 {
         margin: 0;
+        line-height: 80px;
     }
-
-
-
-   
-.sub-title {
-    width: 100%;
-    border: 1px solid tan;
-}
- /*
-.align-right {
-    text-align: right;
-}
-
-.align-left {
-    text-align: left;
-}
-
-.top-margin {
-    margin-top: 38px;
-}
-
-.social {
-    border: 1px solid red;
-    margin: 5px 0 0 10px;
-    display: inline-block;
-}
-
-.item h1 {
-	font-size: 50px;
-	line-height: 120px;
-}
-
-.item h6 {
-	font-size: 14px;
-	text-align: right;
-}*/
     
+    .sub-title {
+        width: 100%;
+    }
     
-    
-    
-    
-	/*header .item {
-		border: 1px solid palevioletred;
-        height: 60px;
-		width: 60%;
-        text-align: left;
-		display: block;
-        margin: 0;
-        vertical-align: top;
-	}
-    
-    .align-right {
-        text-align: left;
+    .top-content {
+	   margin-bottom: 16px;
     }
     
     .top-margin {
         margin-top: 0px;
     }
     
-    .item h1 {
-        margin-top: 40px;
-    }
-
     .item h6 {
         font-size: 14px;
+        margin-top: 10px;
         text-align: left;
-    }*/
-
-
+    }
+    
+    .align-right {
+        text-align: left;
+    }
+    .social {
+        margin: 3px 0 0 15px;
+    }
 	
 	/* SMALLER CARD */
 	
@@ -548,6 +506,34 @@ input {
 	/* END SMALLER CARD*/
 }
 
+@media (max-width: 630px){
+    
+    .top-content {
+        height: 70px;
+    }
+
+    .button-container {
+        width: 100%;
+        margin: 0 0 0 0;
+        display: block;
+        text-align: center;
+    }  
+    
+    .margin-right-headers {
+        margin-top: 10px; 
+    }
+    
+    .margin-left-headers {
+        margin: 0; 
+    }
+    
+    .button {
+		width: 120px;
+		height: 30px;
+        margin-left: 30px;
+	}
+}
+
 @media (max-width: 430px){
 	
 	.rules-box {
@@ -564,22 +550,14 @@ input {
 		margin-top: 9px;
 	}
 	
-	.message-container {
-		margin-top: 15px;
-		width: 100%;
-		height: 20px;
-		/*border: 1px solid mediumvioletred;*/
-	}
-	
 	.message-center {
-
-		height: 20px;
+		height: 30px;
 	}
 	
 		.message-center h6 {
-			font-size: 11px;
-			margin: 3px 0 0 0;
-			color: 3d3d3d;
+			font-size: 14px;
+			margin: 6px 0 0 0;
+			color: #3d3d3d;
 			font-weight: 100;
 		}	
 }

@@ -2,12 +2,11 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
-    <meta charset="UTF-8">
     <title>blackJack 1.0</title>
     <link rel="stylesheet" href="styles.css">
-
     <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 
@@ -15,14 +14,18 @@
     <div class="page-wrap">
         <header>
             <div class="item margin-left-headers">
+
                 <h1>blackJack 1.0</h1>
             </div>
+
             <div class="item margin-right-headers right">
                 <div class="sub-title top-margin align-right">
                     <h6><a href="http://blakehagen.github.io" target="_blank">A Blake Hagen Production</a></h6>
                 </div>
-
                 <div class="sub-title align-right">
+                    <div class="social">
+                        <h6><a href="http://github.com/blakehagen" target="_blank"><i class="fa fa-github"></i></a></h6>
+                    </div>
                     <div class="social">
                         <h6><a href="http://linkedin.com/in/blakehagen" target="_blank"><i class="fa fa-linkedin"></i></a></h6>
                     </div>
@@ -39,7 +42,7 @@
                     <h4>New Game</h4>
                 </div>
 
-                <div class="button next-hand active" id="nextHand">
+                <div class="button active" id="nextHand">
                     <h4>Next Hand</h4>
                 </div>
             </div>
@@ -49,19 +52,11 @@
                     <h4>Hands Played: &nbsp;&nbsp; <span id="handsPlayed"></span></h4>
                 </div>
 
-                <div class="button next-hand no-border" id="">
+                <div class="button no-border" id="">
                     <h4><i class="fa fa-usd"></i> Cash &nbsp;&nbsp; <span id="cashCount"></span></h4>
                 </div>
             </div>
         </div>
-        <!--<div class="button cash right">-->
-
-        <!--<h4><i class="fa fa-usd"></i> Cash:&nbsp;&nbsp; <span id="cashCount"></span></h4>
-                </div>-->
-        <!--<div class="button hands-played right">
-                    <h4>Hands Played: &nbsp;&nbsp; <span id="handsPlayed"></span></h4>
-                </div>-->
-        <!--</div>-->
         <!-- DEALER CARDS SECTION -->
         <div class="container">
             <div class="card-container" id="dealerCards">
