@@ -270,6 +270,7 @@ h4 p {
 	width: 100%;
 	height: 30px;
 	text-align: center;
+    /*border: 1px solid red;*/
 }
 
 .playerButton {
@@ -279,16 +280,19 @@ h4 p {
 	border-radius: 10px;
 	display: inline-block;
 	text-align: center;
+    margin: 0 5px;
 	cursor: pointer;
 }
 
 .playerButton h6 {
-	font-size: 18px;
-	margin: 2px 0;
+	font-size: 15px;
+	margin: 4px 0;
 }
 
 .wager {
-	margin: 8px 0 0 0;
+    height: 100%;
+	margin: 8px 0;
+    /*border: 1px solid green;*/
 }
 
 input {
@@ -298,7 +302,9 @@ input {
 .betButton {
 	font-family: 'Play', sans-serif;
 	font-size: 14px;
-	display: inline-block
+    line-height: 16px;
+    height: 27px;
+    vertical-align: top;
 }
 
 .submit {
