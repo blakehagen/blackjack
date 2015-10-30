@@ -3,6 +3,8 @@ $(document).ready(function () {
     // HIDE NON_ESSENTIAL BUTTONS ON LOAD //
 
     $('#nextHand').hide();
+    $('.hands-button').hide();
+    $('#cash-view').hide();
     $('#stay-button').hide();
     $('#hit').hide();
     $('#bet').hide();
@@ -218,6 +220,9 @@ $(document).ready(function () {
   
     $('#startNewGame').on('click', function () {
         startNewGame(freshDeck);
+        $('#nextHand').hide();
+        $('.hands-button').show();
+        $('#cash-view').show();
         $('#message-text').empty();
         $('#message-text').append('<h6>' + messages.placeBet + '</h6>');
         $('#bet').show();

@@ -135,7 +135,8 @@ header {
 }
 
 .hands-button {
-    width: 230px;
+    width: 190px;
+    border: 1px solid brown;
 }
 
 /* END TOP CONTENT */
