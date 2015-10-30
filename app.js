@@ -2,7 +2,7 @@ $(document).ready(function () {
   
     // HIDE NON_ESSENTIAL BUTTONS ON LOAD //
 
-    $('#nextHand').show();
+    $('#nextHand').hide();
     $('.hands-button').hide();
     $('#cash-view').hide();
     $('#stay-button').hide();
@@ -220,7 +220,7 @@ $(document).ready(function () {
   
     $('#startNewGame').on('click', function () {
         startNewGame(freshDeck);
-        $('#nextHand').show();
+        $('#nextHand').hide();
         $('.hands-button').show();
         $('#cash-view').show();
         $('#message-text').empty();
