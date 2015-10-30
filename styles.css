@@ -58,7 +58,6 @@ header {
     
 .sub-title {
     width: 100%;
-    /*border: 1px solid tan;*/
 }
 
 .align-right {
@@ -135,9 +134,13 @@ header {
 }
 
 .hands-button {
-    width: 190px;
-    border: 1px solid brown;
+    width: 170px;
+    /*border: 1px solid brown;*/
 }
+
+/*#cash-view {
+    border: 1px solid brown;
+}*/
 
 /* END TOP CONTENT */
 
@@ -354,14 +357,20 @@ input {
     }
 }
 
+@media (max-width: 800px){
+    .margin-right-headers {
+        margin: 0 0px 0 0;
+    }
+}
+
 @media (max-width: 792px){
     
     .top-content {
-        height: 30px;
+        height: 33px;
     }
 
     .button-container {
-        height: 30px;
+        height: 33px;
     }
     
     .item h1 {
@@ -369,18 +378,18 @@ input {
     }
     
 	.button {
-		width: 120px;
-		height: 30px;
+		width: 135px;
+		height: 33px;
 	}
 
 	.button h4 {
 		font-size: 15px;
-		line-height: 28px;
+		line-height: 31px;
 	}
     
-    .hands-button {
+    /*.hands-button {
         width: 170px;
-    }
+    }*/
 	
 	.mid {
 		height: 100px;
@@ -417,7 +426,7 @@ input {
 	}
 }
 
-@media (max-width: 670px){
+@media (max-width: 690px){
     
     header {
         width: 100%;
@@ -442,14 +451,6 @@ input {
         width: 100%;
     }
     
-    .top-content {
-	   margin-bottom: 16px;
-    }
-    
-    .top-margin {
-        margin-top: 0px;
-    }
-    
     .item h6 {
         font-size: 14px;
         margin-top: 10px;
@@ -460,7 +461,7 @@ input {
         text-align: left;
     }
     .social {
-        margin: 3px 0 0 15px;
+        margin: 3px 15px 0 0px;
     }
 	
 	/* SMALLER CARD */
@@ -509,19 +510,20 @@ input {
         margin: 3px;
     }
 	/* END SMALLER CARD*/
-}
-
-@media (max-width: 630px){
     
     .top-content {
-        height: 70px;
+        height: 82px;
+        margin-bottom: 16px;
+    }
+    
+    .top-margin {
+        margin-top: 0px;
     }
 
     .button-container {
         width: 100%;
         margin: 0 0 0 0;
         display: block;
-        text-align: center;
     }  
     
     .margin-right-headers {
@@ -534,8 +536,8 @@ input {
     }
     
     .button {
-		width: 120px;
-		height: 30px;
+		width: 140px;
+		height: 35px;
         margin-left: 30px;
 	}
     
