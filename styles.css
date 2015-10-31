@@ -138,10 +138,6 @@ header {
     /*border: 1px solid brown;*/
 }
 
-/*#cash-view {
-    border: 1px solid brown;
-}*/
-
 /* END TOP CONTENT */
 
 /* CARD CONTAINER and CARDS */
@@ -392,10 +388,6 @@ input {
 		font-size: 15px;
 		line-height: 31px;
 	}
-    
-    /*.hands-button {
-        width: 170px;
-    }*/
 	
 	.mid {
 		height: 100px;
