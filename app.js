@@ -284,20 +284,24 @@ $(document).ready(function () {
     });
 
     $('#place-bet').on('click', function () {
+        validBet = false;
         betIsPlaced();
     });
 
     function placeBet() {
         if (validBet === true) {
-            bet = $('#bet').val();
+            // bet = $('#bet').val();
             cashCount = cashCount - bet;
             $('#cashCount').text(cashCount);
             deal(deck);
             $('#message-text').empty();
             $('#message-text').append('<h6>' + messages.playerAction + '</h6>');
+            console.log("I AM HERE");
+            return true;
         }
-
+        bet = 0;
         bet = $('#bet').val();
+        console.log("line303 " + bet);
         if (parseInt(bet) > parseInt(cashCount)) {
             validBet = false;
             $('#bet').val('');
