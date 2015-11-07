@@ -225,6 +225,7 @@ $(document).ready(function () {
         $('#handsPlayed').append(handsPlayed);
         $('#dealerCards').empty();
         $('#playerCards').empty();
+        $('#new-game-container').hide();
         $('#startNewGame').hide();
     });
   
@@ -369,6 +370,7 @@ $(document).ready(function () {
             $('#nextHand').hide();
             $('#dealerCards').empty();
             $('#playerCards').empty();
+            $('#new-game-container').show();
             $('#startNewGame').show();
             return false;
         }
