@@ -10,6 +10,8 @@ $(document).ready(function () {
     $('#place-bet').hide();
     $('#bet-50').hide();
     $('#bet-100').hide();
+    $('#bet-500').hide();
+    $('#bet-1000').hide();
     $('#bet-all').hide();
     $('#bet-other').hide();
         
@@ -223,6 +225,7 @@ $(document).ready(function () {
         $('#handsPlayed').append(handsPlayed);
         $('#dealerCards').empty();
         $('#playerCards').empty();
+        $('#startNewGame').hide();
     });
   
     // CHECK BET VALIDITY  //
@@ -242,6 +245,18 @@ $(document).ready(function () {
         betIsPlaced();
     });
 
+    $('#bet-500').on('click', function () {
+        bet = 500;
+        validBet = true;
+        betIsPlaced();
+    });
+
+    $('#bet-1000').on('click', function () {
+        bet = 1000;
+        validBet = true;
+        betIsPlaced();
+    });
+
     $('#bet-all').on('click', function () {
         bet = cashCount;
         validBet = true;
@@ -254,6 +269,8 @@ $(document).ready(function () {
 
         $('#bet-50').hide();
         $('#bet-100').hide();
+        $('#bet-500').hide();
+        $('#bet-1000').hide();
         $('#bet-all').hide();
         $('#bet-other').hide();
     });
@@ -275,7 +292,6 @@ $(document).ready(function () {
         }
         bet = 0;
         bet = $('#bet').val();
-        console.log("line303 " + bet);
         if (parseInt(bet) > parseInt(cashCount)) {
             validBet = false;
             $('#bet').val('');
@@ -315,6 +331,8 @@ $(document).ready(function () {
         $('#place-bet').hide();
         $('#bet-50').hide();
         $('#bet-100').hide();
+        $('#bet-500').hide();
+        $('#bet-1000').hide();
         $('#bet-all').hide();
         $('#bet-other').hide();
         // Show Hit & Stand Buttons //
@@ -351,6 +369,7 @@ $(document).ready(function () {
             $('#nextHand').hide();
             $('#dealerCards').empty();
             $('#playerCards').empty();
+            $('#startNewGame').show();
             return false;
         }
         return true;
@@ -373,16 +392,25 @@ $(document).ready(function () {
         if (broke() === false) {
             return false;
         }
+        if (parseInt(cashCount) >= 2000) {
+            $('#bet-50').hide();
+            $('#bet-100').hide();
+            $('#bet-500').show();
+            $('#bet-1000').show();
+            $('#bet-all').show();
+            $('#bet-other').show();
+        } else {
+            $('#bet-50').show();
+            $('#bet-100').show();
+            $('#bet-all').show();
+            $('#bet-other').show();
+        }
         $('#dealerCards').empty();
         $('#playerCards').empty();
         $('#message-text').empty();
         $('#message-text').append('<h6>' + messages.placeBet + '</h6>');
         $('#bet').hide();
         $('#place-bet').hide();
-        $('#bet-50').show();
-        $('#bet-100').show();
-        $('#bet-all').show();
-        $('#bet-other').show();
         $('#nextHand').hide();
     });
   
