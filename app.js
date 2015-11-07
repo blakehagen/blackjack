@@ -225,6 +225,7 @@ $(document).ready(function () {
         $('#handsPlayed').append(handsPlayed);
         $('#dealerCards').empty();
         $('#playerCards').empty();
+        $('#startNewGame').hide();
     });
   
     // CHECK BET VALIDITY  //
@@ -368,6 +369,7 @@ $(document).ready(function () {
             $('#nextHand').hide();
             $('#dealerCards').empty();
             $('#playerCards').empty();
+            $('#startNewGame').show();
             return false;
         }
         return true;
