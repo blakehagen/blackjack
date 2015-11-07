@@ -280,9 +280,13 @@ h4 p {
 	cursor: pointer;
 }
 
+.next-hand {
+    width: 150px;
+}
+
 .playerButton h6 {
 	font-size: 15px;
-	margin: 4px 0;
+	margin: 5px 0;
 }
 
 .wager {
